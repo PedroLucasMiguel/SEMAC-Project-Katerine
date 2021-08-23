@@ -1,6 +1,9 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('Zlp6LJQ8D8/', admin.site.urls),
+    path('admin/', views.adminCheck),
+    path('', include('usermanager.urls')),
 ]

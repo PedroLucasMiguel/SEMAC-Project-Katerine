@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-
+from .semac_utils import FieldMaxLength
 
 class SemacUserManager(BaseUserManager):
 
@@ -21,7 +21,7 @@ class SemacUserManager(BaseUserManager):
 
 class SemacUser(AbstractBaseUser, PermissionsMixin):
 
-    email = models.EmailField(max_length=128, primary_key=True, blank=False, null=False)
+    email = models.EmailField(max_length=FieldMaxLength.EMAIL, primary_key=True, blank=False, null=False)
 
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -36,14 +36,14 @@ class SemacUser(AbstractBaseUser, PermissionsMixin):
 
 class UserPersonalData(models.Model):
 
-    cpf = models.CharField(max_length=14, primary_key=True, null=False, blank=False)
+    cpf = models.CharField(max_length=FieldMaxLength.CPF, primary_key=True, null=False, blank=False)
     user_email = models.ForeignKey(SemacUser, on_delete=models.CASCADE, related_name='personal_data')
-    full_name = models.CharField(max_length=128, null=False, blank=False)
+    full_name = models.CharField(max_length=FieldMaxLength.FULL_NAME, null=False, blank=False)
     dob = models.DateField(blank=False, null=False)
-    state = models.CharField(max_length=127, null=False, blank=False)
-    city = models.CharField(max_length=127, null=False, blank=False)
-    address = models.CharField(max_length=127, null=False, blank=False)
-    contact_number = models.CharField(max_length=14, null=False, blank=False)
+    state = models.CharField(max_length=FieldMaxLength.STATE, null=False, blank=False)
+    city = models.CharField(max_length=FieldMaxLength.CITY, null=False, blank=False)
+    address = models.CharField(max_length=FieldMaxLength.ADDRESS, null=False, blank=False)
+    contact_number = models.CharField(max_length=FieldMaxLength.CONTACT_NUMBER, null=False, blank=False)
 
     def __str__(self):
         return f'CPF: {self.cpf} | Full Name: {self.full_name} | Email: {self.user_email}'
@@ -51,9 +51,9 @@ class UserPersonalData(models.Model):
 
 class UserUnespData(models.Model):
 
-    ra = models.CharField(max_length=9, primary_key=True, null=False, blank=False)
+    ra = models.CharField(max_length=FieldMaxLength.RA, primary_key=True, null=False, blank=False)
     user_cpf = models.ForeignKey(UserPersonalData, on_delete=models.CASCADE, related_name='unesp_data')
-    course_name = models.CharField(max_length=128, null=False, blank=False)
+    course_name = models.CharField(max_length=FieldMaxLength.COURSE_NAME, null=False, blank=False)
 
     def __str__(self):
         return f'RA: {self.ra} | CPF: {self.user_cpf} | Course Name: {self.course_name}'
@@ -63,7 +63,7 @@ class Subscription(models.Model):
 
     id = models.AutoField(primary_key=True)
     user_cpf = models.ForeignKey(UserPersonalData, on_delete=models.CASCADE, related_name='subscription')
-    type = models.CharField(max_length=64, null=False, blank=False)
+    type = models.CharField(max_length=FieldMaxLength.SUBSCRIPTION_TYPE, null=False, blank=False)
     is_payed = models.BooleanField(default=False)
 
     def __str__(self):
@@ -73,8 +73,8 @@ class Subscription(models.Model):
 class Lecturer(models.Model):
 
     id = models.AutoField(primary_key=True)
-    full_name = models.CharField(max_length=128, null=False, blank=False)
-    email = models.EmailField(max_length=128, null=False, blank=False)
+    full_name = models.CharField(max_length=FieldMaxLength.FULL_NAME, null=False, blank=False)
+    email = models.EmailField(max_length=FieldMaxLength.EMAIL, null=False, blank=False)
 
     def __str__(self):
         return f'ID: {self.id} | Full Name: {self.full_name} | Email: {self.email}'
@@ -83,7 +83,7 @@ class Lecturer(models.Model):
 class Lecture(models.Model):
 
     id = models.AutoField(primary_key=True)
-    title = models.CharField(max_length=128, null=False, blank=False)
+    title = models.CharField(max_length=FieldMaxLength.LECTURE_TITLE, null=False, blank=False)
     lecturer_id = models.ForeignKey(Lecturer, on_delete=models.CASCADE, related_name='lecture')
     date_and_time = models.DateTimeField(blank=False, null=False)
 

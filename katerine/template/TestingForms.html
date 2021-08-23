@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing Forms</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <h1>Autenticado!</h1>
+    {% endif %}
+    {{answer}}
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Teste</button>
+    </form>
+</body>
+</html>
