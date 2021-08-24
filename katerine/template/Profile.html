@@ -1,0 +1,46 @@
+{% extends 'Template.html' %}
+{% load static %}
+{% block title %} SEMAC - Login {% endblock %}
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+{% block content %}
+        {{lc.lecture_id.title}}
+        <div class="nes-container">
+            <div class="row">
+                <!--Dados do usuário-->
+                <div class="col-sm-5">
+                    <div class="nes-container is-dark with-title" id="user-data">
+                        <h1 class="title">Ficha do aventureiro</h1>
+                        <p>Nome: {{pd.full_name}}</p>
+                        <p>CPF: {{pd.cpf}}</p>
+                        <p>Data de nascimento: {{pd.dob}}</p>
+                    </div>
+                </div>
+                 <!--Hitórico-->
+                <div class="col-sm-7">
+                    <div class="nes-container is-dark with-title" id="user-records">
+                        <h1 class="title">Missões Concluídas</h1>
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Título</th>
+                                <th scope="col">Palestrante</th>
+                                <th scope="col">Data e hora</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for o in lc %}
+                                <tr>
+                                    <th scope="row">{{o.lecture_id.title}}</th>
+                                    <td>{{o.lecture_id.lecturer_id.full_name}}</td>
+                                    <td>{{o.lecture_id.date_and_time}}</td>
+                                </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

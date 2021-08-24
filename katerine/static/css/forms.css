@@ -1,0 +1,31 @@
+label{
+    font-family: 'VCR_OSD_MONO_1.001';
+}
+
+form ul{
+    text-align: left !important;
+}
+
+.semac-field{
+    background-color: white !important;
+    color: black !important;
+}
+
+.form-title{
+    font-family: 'VCR_OSD_MONO_1.001';
+
+    font-weight: bold;
+
+}
+
+.form-description{
+    font-family: 'VCR_OSD_MONO_1.001';
+    justify-content: center;
+    font-weight: bold;
+    text-align: center;
+}
+
+.nes-container{
+    text-align: center;
+    width: 100%;
+}

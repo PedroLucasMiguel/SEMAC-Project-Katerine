@@ -14,13 +14,15 @@
         <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
         <script src="{% static 'js/popper.min.js' %}"></script>
+        <!-- Nossos css -->
+        {% block additional_css %} {% endblock %}
     </head>
     <body>
         <section id="nav-bar">
             <!-- Header -->
             <nav class="navbar navbar-expand-lg navbar-light">
                 <!--Navbar-->
-                <a class="navbar-brand" href="#"> <!--link para a home page-->
+                <a class="navbar-brand" href="/"> <!--link para a home page-->
                     <!--Logo-->
                     <img src="{% static 'images/LOGO-Final-8bit-cut.png' %}" width="120px" height="" alt="semac-logo-home">
                     <!--Logo-->
@@ -42,14 +44,14 @@
                     <ul class="navbar-nav ml-auto">
                         {% if user.is_authenticated %}
                                 <li class="nav-item">
-                                <a class="nav-link" id="Perfil" href="">Perfil</a>
+                                <a class="nav-link" id="Perfil" href="/profile/">Perfil</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link" id="Logout" href="">Logout</a>
+                                <a class="nav-link" id="Logout" href="/logout/">Logout</a>
                                 </li>
                         {% else %}
                                 <li class="nav-item">
-                                <a class="nav-link" id="Login" href="">Login</a>
+                                <a class="nav-link" id="Login" href="/login/">Login</a>
                                 </li>
                                 <li class="nav-item">
                                 <a class="nav-link" id="Inscrevase" href="">Inscreva-se</a>
@@ -62,12 +64,8 @@
             <!--Header-->
         </section>
 
-        <div class="outer">
-            <div class="nes-container is-dark">
-                {% block content %}
-                {% endblock %}
-            </div>
-        </div>
+        {% block content %}
+        {% endblock %}
 
         <section id="footer">
             <!-- Footer -->
@@ -127,7 +125,7 @@
                         <i class="fas fa-gem me-3"></i>Semac 2021
                         </h6>
                         <p class="footer-item">
-                        Esse pode ser um espaço para qualquer coisa, podemos colocar os patrocinadores maiores ou um textinho qualquer ou só tirar essa parte
+                            Esse pode ser um espaço para qualquer coisa, podemos colocar os patrocinadores maiores ou um textinho qualquer ou só tirar essa parte
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -174,7 +172,7 @@
             
                 <!-- Copyright -->
                 <div class="text-center p-4 footer-item">
-                © 2021 Copyright:
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="color: white">©</a> 2021 Copyright:
                 <a class="text-reset fw-bold footer-item" href="" id="semac">SEMAC</a>
                 </div>
                 <!-- Copyright -->

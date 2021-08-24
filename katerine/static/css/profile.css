@@ -38,53 +38,7 @@
     font-style: normal;
 }
 
-nav{
-    background-color: #212529 !important;
-}
-
-.nav-link{
-    color: white !important;
-}
-
-.footer-item{
-    color: white !important;
-}
-
-footer h6{
-    color: red !important;
-}
-
-#semac{
-    color: red !important;
-}
-
-#inner{
-    display: inline-block;
-    width: 80%;
-}
-
-#submit-form{
-    font-family: 'VCR_OSD_MONO_1.001';
-    margin-top: 5%;
-    float: right;
-}
-
-#nav-bar{
-    font-family: 'VCR_OSD_MONO_1.001';
-    font-weight: bold;
-    font-size: 17px;
-}
-
-footer{
-    background-color: #212529 !important;
-}
-
-#footer{
-    font-family: 'VCR_OSD_MONO_1.001';
-    font-size: 15px;
-}
-
-.nes-icon{
-    margin-right: 10px !important;
-    margin-left: 10px !important;
+body{
+    font-family: 'VCR_OSD_MONO_1.001'!important;
+    font-size: 17px !important;
 }

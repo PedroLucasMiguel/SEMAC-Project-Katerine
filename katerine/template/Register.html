@@ -1,0 +1,26 @@
+{% extends 'Template.html' %}
+{% load static %}
+{% block title %} SEMAC - Registro {% endblock %}
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock %}
+{% block content %}
+
+    <div class="nes-container">
+        <div class="nes-container is-dark" id="inner">
+            <h1 class="form-title">Preencha sua ficha!</h1>
+            <br>
+            <a class="form-description">
+                (Ao realizar o envio dos dados deste formulário, eu concordo com a utlização dos meus dados para o Censo da SEMAC 2021)
+            </a>
+            <br>
+            <br>
+            <form method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" class="nes-btn is-dark" id="submit-form" value="Confirmar!">
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -8,8 +8,9 @@ from .models import SemacUser
 class SemacUserLoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(SemacUserLoginForm, self).__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update({'class': '#', 'id': 'email'})
-        self.fields['password'].widget.attrs.update({'class': '#', 'id': 'password'})
+        self.fields['username'].widget.attrs.update({'class': 'nes-input is-dark semac-field', 'id': 'email'})
+        self.fields['username'].label = 'E-mail'
+        self.fields['password'].widget.attrs.update({'class': 'nes-input is-dark semac-field', 'id': 'password'})
 
     class Meta:
         model = SemacUser
@@ -20,9 +21,9 @@ class SemacUserRegisterForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super(SemacUserRegisterForm, self).__init__(*args, **kwargs)
-        self.fields['email'].widget.attrs.update({'class': '#', 'id': 'email'})
-        self.fields['password1'].widget.attrs.update({'class': '#', 'id': 'password1'})
-        self.fields['password2'].widget.attrs.update({'class': '#', 'id': 'password'})
+        self.fields['email'].widget.attrs.update({'class': 'nes-input is-dark semac-field', 'id': 'email'})
+        self.fields['password1'].widget.attrs.update({'class': 'nes-input is-dark semac-field', 'id': 'password1'})
+        self.fields['password2'].widget.attrs.update({'class': 'nes-input is-dark semac-field', 'id': 'password'})
 
     class Meta:
         model = SemacUser
@@ -37,9 +38,9 @@ class PersonalDataForm(forms.Form):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class': 'nes-input is-dark',
+                'class': 'nes-input is-dark semac-field',
                 'id': 'full-name-field',
-                'placeholder': 'Dawn Pearl'
+                'placeholder': 'Dawn S. Pearl'
             }
         )
     )
@@ -50,7 +51,7 @@ class PersonalDataForm(forms.Form):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class': 'nes-input is-dark',
+                'class': 'nes-input is-dark semac-field',
                 'id': 'cpf-field',
                 'placeholder': '000.000.000-00'
             }
@@ -62,7 +63,7 @@ class PersonalDataForm(forms.Form):
         required=True,
         widget=forms.DateInput(
             attrs={
-                'class': 'nes-input is-dark',
+                'class': 'nes-input is-dark semac-field',
                 'id': 'dob-field',
                 'type': 'date',
             }
@@ -76,9 +77,8 @@ class PersonalDataForm(forms.Form):
         widget=forms.Select(
             choices=BrazilStates.states,
             attrs={
-                'class': 'nes-input is-dark',
+                'class': 'nes-input is-dark semac-field',
                 'id': 'state-field',
-                'placeholder': '000.000.000-00'
             }
         )
     )
@@ -89,7 +89,7 @@ class PersonalDataForm(forms.Form):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class': 'nes-input is-dark',
+                'class': 'nes-input is-dark semac-field',
                 'id': 'city-field',
             }
         )
@@ -101,7 +101,7 @@ class PersonalDataForm(forms.Form):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class': 'nes-input is-dark',
+                'class': 'nes-input is-dark semac-field',
                 'id': 'address-field'
             }
         )
@@ -113,7 +113,7 @@ class PersonalDataForm(forms.Form):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class': 'nes-input is-dark',
+                'class': 'nes-input is-dark semac-field',
                 'id': 'contact-number-field'
             }
         )
@@ -130,7 +130,7 @@ class PersonalDataUnespForm(forms.Form):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class': '#',
+                'class': 'nes-input is-dark semac-field',
                 'id': 'full-name-field',
                 'placeholder': 'Dawn Pearl'
             }
@@ -142,7 +142,7 @@ class PersonalDataUnespForm(forms.Form):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class': '#',
+                'class': 'nes-input is-dark semac-field',
                 'id': 'cpf-field',
                 'placeholder': '000.000.000-00'
             }
@@ -154,7 +154,7 @@ class PersonalDataUnespForm(forms.Form):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class': '#',
+                'class': 'nes-input is-dark semac-field',
                 'id': 'ra-field',
                 'placeholder': '00000000'
             }
@@ -167,7 +167,7 @@ class PersonalDataUnespForm(forms.Form):
         widget=forms.Select(
             choices=IbilceCourses.courses,
             attrs={
-                'class': '#',
+                'class': 'nes-input is-dark semac-field',
                 'id': 'course-name-field'
             }
         )
@@ -177,7 +177,7 @@ class PersonalDataUnespForm(forms.Form):
         required=True,
         widget=forms.DateTimeInput(
             attrs={
-                'class': '#',
+                'class': 'nes-input is-dark semac-field',
                 'id': 'dob-field',
             }
         )
@@ -189,9 +189,8 @@ class PersonalDataUnespForm(forms.Form):
         widget=forms.Select(
             choices=BrazilStates.states,
             attrs={
-                'class': '#',
+                'class': 'nes-input is-dark semac-field',
                 'id': 'state-field',
-                'placeholder': '000.000.000-00'
             }
         )
     )
@@ -201,7 +200,7 @@ class PersonalDataUnespForm(forms.Form):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class': '#',
+                'class': 'nes-input is-dark semac-field',
                 'id': 'city-field',
             }
         )
@@ -212,7 +211,7 @@ class PersonalDataUnespForm(forms.Form):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class': '#',
+                'class': 'nes-input is-dark semac-field',
                 'id': 'address-field'
             }
         )
@@ -223,7 +222,7 @@ class PersonalDataUnespForm(forms.Form):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class': '#',
+                'class': 'nes-input is-dark semac-field',
                 'id': 'contact-number-field'
             }
         )
