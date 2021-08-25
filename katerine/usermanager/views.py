@@ -43,7 +43,11 @@ def profile_page(request):
             try:
                 personal_data = models.UserPersonalData.objects.get(user_email=request.user)
                 lectures = models.PersonOnLecture.objects.filter(user_cpf=personal_data).all()
-                return render(request, 'Profile.html', {'pd': personal_data, 'lc': lectures})
+                unesp_data = None
+                if models.UserUnespData.objects.filter(user_cpf=personal_data).exists():
+                    unesp_data = models.UserUnespData.objects.get(user_cpf=personal_data)
+
+                return render(request, 'Profile.html', {'pd': personal_data, 'lc': lectures, 'ud': unesp_data})
 
             except ObjectDoesNotExist:
                 return redirect('/are-you-unesp/')
@@ -63,6 +67,9 @@ def register_page(request):
             return redirect('/authenticate-email/')
 
         return render(request, 'Register.html', {'form': form})
+
+    if request.user.is_authenticated:
+        return redirect('/')
 
     form = forms.SemacUserRegisterForm()
     return render(request, 'Register.html', {'form': form})

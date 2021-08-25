@@ -15,6 +15,9 @@
                         <p>Nome: {{pd.full_name}}</p>
                         <p>CPF: {{pd.cpf}}</p>
                         <p>Data de nascimento: {{pd.dob}}</p>
+                        {% if ud != None %}
+                        <p>Ra: {{ud.ra}}</p>
+                        {% endif %}
                     </div>
                 </div>
                  <!--Hitórico-->
