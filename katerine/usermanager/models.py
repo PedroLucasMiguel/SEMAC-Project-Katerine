@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.core.validators import MinLengthValidator
 from .semac_utils import FieldMaxLength
 
 class SemacUserManager(BaseUserManager):
@@ -36,7 +37,7 @@ class SemacUser(AbstractBaseUser, PermissionsMixin):
 
 class UserPersonalData(models.Model):
 
-    cpf = models.CharField(max_length=FieldMaxLength.CPF, primary_key=True, null=False, blank=False)
+    cpf = models.CharField(max_length=FieldMaxLength.CPF, primary_key=True, null=False, blank=False, unique=True)
     user_email = models.ForeignKey(SemacUser, on_delete=models.CASCADE, related_name='personal_data')
     full_name = models.CharField(max_length=FieldMaxLength.FULL_NAME, null=False, blank=False)
     dob = models.DateField(blank=False, null=False)
@@ -51,7 +52,7 @@ class UserPersonalData(models.Model):
 
 class UserUnespData(models.Model):
 
-    ra = models.CharField(max_length=FieldMaxLength.RA, primary_key=True, null=False, blank=False)
+    ra = models.CharField(max_length=FieldMaxLength.RA, primary_key=True, null=False, blank=False, unique=True)
     user_cpf = models.ForeignKey(UserPersonalData, on_delete=models.CASCADE, related_name='unesp_data')
     course_name = models.CharField(max_length=FieldMaxLength.COURSE_NAME, null=False, blank=False)
 

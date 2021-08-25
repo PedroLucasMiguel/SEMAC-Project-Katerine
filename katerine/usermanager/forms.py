@@ -126,6 +126,7 @@ class PersonalDataForm(forms.Form):
 class PersonalDataUnespForm(forms.Form):
 
     full_name = forms.CharField(
+        label='Nome Completo',
         max_length=FieldMaxLength.FULL_NAME,
         required=True,
         widget=forms.TextInput(
@@ -138,6 +139,7 @@ class PersonalDataUnespForm(forms.Form):
     )
 
     cpf = forms.CharField(
+        label='CPF',
         max_length=FieldMaxLength.CPF,
         required=True,
         widget=forms.TextInput(
@@ -150,6 +152,7 @@ class PersonalDataUnespForm(forms.Form):
     )
 
     ra = forms.CharField(
+        label='RA',
         max_length=FieldMaxLength.RA,
         required=True,
         widget=forms.TextInput(
@@ -162,6 +165,7 @@ class PersonalDataUnespForm(forms.Form):
     )
 
     course_name = forms.CharField(
+        label='Nome do curso',
         max_length=FieldMaxLength.COURSE_NAME,
         required=True,
         widget=forms.Select(
@@ -174,16 +178,19 @@ class PersonalDataUnespForm(forms.Form):
     )
 
     dob = forms.DateTimeField(
+        label='Data de nascimento',
         required=True,
         widget=forms.DateTimeInput(
             attrs={
                 'class': 'nes-input is-dark semac-field',
                 'id': 'dob-field',
+                'type': 'date',
             }
         )
     )
 
     state = forms.CharField(
+        label='Estado',
         max_length=FieldMaxLength.STATE,
         required=True,
         widget=forms.Select(
@@ -196,6 +203,7 @@ class PersonalDataUnespForm(forms.Form):
     )
 
     city = forms.CharField(
+        label='Cidade',
         max_length=FieldMaxLength.CITY,
         required=True,
         widget=forms.TextInput(
@@ -207,6 +215,7 @@ class PersonalDataUnespForm(forms.Form):
     )
 
     address = forms.CharField(
+        label='Endereço',
         max_length=FieldMaxLength.ADDRESS,
         required=True,
         widget=forms.TextInput(
@@ -218,6 +227,7 @@ class PersonalDataUnespForm(forms.Form):
     )
 
     contact_number = forms.CharField(
+        label='Telefone de contato',
         max_length=FieldMaxLength.CONTACT_NUMBER,
         required=True,
         widget=forms.TextInput(

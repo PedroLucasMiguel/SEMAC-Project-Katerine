@@ -2,17 +2,18 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth import login, logout
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib import messages
 from django.http import HttpResponse
 
 from . import forms, models
+from .semac_utils import *
 
 
-def homepage(request):
+def home_page(request):
     return render(request, 'Homepage.html', {})
 
 
-def loginpage(request):
-
+def login_page(request):
     if request.POST:
         form = forms.SemacUserLoginForm(data=request.POST)
 
@@ -29,36 +30,198 @@ def loginpage(request):
     return redirect('/')
 
 
-def logoutpage(request):
+def logout_page(request):
     logout(request)
     return redirect('/')
 
 
-def profilepage(request):
+def profile_page(request):
     if request.user.is_authenticated:
         try:
             personal_data = models.UserPersonalData.objects.get(user_email=request.user)
             lectures = models.PersonOnLecture.objects.filter(user_cpf=personal_data).all()
             return render(request, 'Profile.html', {'pd': personal_data, 'lc': lectures})
+
         except ObjectDoesNotExist:
-            return redirect('/debug/')
+            return redirect('/are-you-unesp/')
+
     return redirect('/login/')
 
 
-def registerpage(request):
+def register_page(request):
     if request.POST:
         form = forms.SemacUserRegisterForm(data=request.POST)
+
         if form.is_valid():
-            form.save()
-            return redirect('/debug/')
+            user = form.save()
+            login(request, user)  # The login is necessary because we need a logged user to register the personal data
+            return redirect('/are-you-unesp/')
+
         return render(request, 'Register.html', {'form': form})
+
     form = forms.SemacUserRegisterForm()
     return render(request, 'Register.html', {'form': form})
 
 
-def personaldatapage(request):
-    pass
+def are_you_unesp_page(request):
+    if request.user.is_authenticated:
 
+        if not models.UserPersonalData.objects.filter(user_email=request.user).exists():
+            return render(request, 'AreYouUnesp.html', {})
+
+        return redirect('/')
+
+    return redirect('/login/')
+
+
+def personal_data_page(request):
+    if request.POST:
+        form = forms.PersonalDataForm(data=request.POST)
+
+        if form.is_valid():
+            '''
+            Uma dica para gerações futuras, tentem melhorar o que foi feito nesta parte.
+            O método usado aqui de fato funciona, mas definitivamente não é o método mais elegante para fazer isso.
+            '''
+            try:
+                full_name = Validators.full_name_validator(form.cleaned_data.get('full_name'))
+                cpf = Validators.cpf_validator(form.cleaned_data.get('cpf'))
+                dob = Validators.age_validator(form.cleaned_data.get('dob'), 11)
+                state = form.cleaned_data.get('state')  # Não precisa pois a entrada ja é tratada por padrão
+                city = Validators.city_validator(form.cleaned_data.get('city'))
+                address = Validators.address_validator(form.cleaned_data.get('address'))
+                contact_number = Validators.contact_number_validator(form.cleaned_data.get('contact_number'))
+
+                if not models.UserPersonalData.objects.filter(cpf=cpf).exists():
+                    personal_data = models.UserPersonalData(
+                        full_name=full_name,
+                        cpf=cpf,
+                        user_email=request.user,
+                        dob=dob,
+                        state=state,
+                        city=city,
+                        address=address,
+                        contact_number=contact_number,
+                    )
+                    personal_data.save()
+                    return redirect('/profile/')
+
+                messages.error(request, 'CPF Informado ja se encontra cadastrado')
+
+            except FullNameNotValidException:
+                messages.error(request, 'Nome informado inválido')
+
+            except CpfNotValidException:
+                messages.error(request, 'CPF informado inválido')
+
+            except AgeNotValidException:
+                messages.error(request, 'Idade informada inválido')
+
+            except CityNotValidException:
+                messages.error(request, 'Cidade informada inválido')
+
+            except AddressNotValidException:
+                messages.error(request, 'Endereço informado inválido')
+
+            except ContactNumberNotValidException:
+                messages.error(request, 'Telefone de contado informado inválido')
+
+        return render(request, 'PersonalDataForm.html', {'form': form})
+
+    if request.user.is_authenticated:
+
+        if not models.UserPersonalData.objects.filter(user_email=request.user).exists():
+            form = forms.PersonalDataForm()
+            return render(request, 'PersonalDataForm.html', {'form': form})
+
+        return redirect('/')
+
+    return redirect('/login/')
+
+
+def personal_data_unesp_page(request):
+    if request.POST:
+        form = forms.PersonalDataUnespForm(data=request.POST)
+
+        if form.is_valid():
+            '''
+            Mesma coisa de antes...
+            Só.... NÃO! (Predo agonizando por estar programando a 8 horas sem parar)
+            (Se vocês não passaram por isso vcs não sabem oq é programar)
+            
+            (Pq eu escolhi comp mesmo?)
+            '''
+            try:
+                full_name = Validators.full_name_validator(form.cleaned_data.get('full_name'))
+                cpf = Validators.cpf_validator(form.cleaned_data.get('cpf'))
+                ra = Validators.ra_validator(form.cleaned_data.get('ra'))
+                course_name = form.cleaned_data.get('course_name')  # Não precisa de validação
+                dob = Validators.age_validator(form.cleaned_data.get('dob'), 16)
+                state = form.cleaned_data.get('state') # Não precisa de validação
+                city = Validators.city_validator(form.cleaned_data.get('city'))
+                address = Validators.address_validator(form.cleaned_data.get('address'))
+                contact_number = Validators.contact_number_validator(form.cleaned_data.get('contact_number'))
+
+                if not models.UserPersonalData.objects.filter(cpf=cpf).exists():
+                    personal_data = models.UserPersonalData(
+                        full_name=full_name,
+                        cpf=cpf,
+                        user_email=request.user,
+                        dob=dob,
+                        state=state,
+                        city=city,
+                        address=address,
+                        contact_number=contact_number,
+                    )
+
+                    if not models.UserUnespData.objects.filter(ra=ra).exists():
+                        personal_unesp_data = models.UserUnespData(
+                            ra=ra,
+                            course_name=course_name,
+                            user_cpf=personal_data,
+                        )
+                        personal_data.save()
+                        personal_unesp_data.save()
+                        return redirect('/profile/')
+
+                    else:
+                        messages.error(request, 'RA informado já se encontra cadastrado no sistema')
+
+                else:
+                    messages.error(request, 'CPF Informado já se encontra cadastrado')
+
+            except FullNameNotValidException:
+                messages.error(request, 'Nome informado inválido')
+
+            except CpfNotValidException:
+                messages.error(request, 'CPF informado inválido')
+
+            except AgeNotValidException:
+                messages.error(request, 'Idade informada inválido')
+
+            except CityNotValidException:
+                messages.error(request, 'Cidade informada inválido')
+
+            except AddressNotValidException:
+                messages.error(request, 'Endereço informado inválido')
+
+            except ContactNumberNotValidException:
+                messages.error(request, 'Telefone de contado informado inválido')
+
+            except RaNotValidException:
+                messages.error(request, 'RA informado inválido')
+
+        return render(request, 'PersonalDataForm.html', {'form': form})
+
+    if request.user.is_authenticated:
+
+        if not models.UserPersonalData.objects.filter(user_email=request.user).exists():
+            form = forms.PersonalDataUnespForm()
+            return render(request, 'PersonalDataForm.html', {'form': form})
+
+        return redirect('/')
+
+    return redirect('/login/')
 
 def DEBUG_render_test(request):
     if request.POST:

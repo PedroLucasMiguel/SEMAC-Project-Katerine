@@ -1,3 +1,5 @@
+from datetime import date
+
 class FieldMaxLength:
 
     EMAIL = 128
@@ -59,3 +61,95 @@ class IbilceCourses:
         ('Letras', 'Letras: Licenciatura'),
         ('Pedagogia', 'Pedagogia: Licenciatura')
     )
+
+
+class FullNameNotValidException(Exception):
+    pass
+
+#class EmailNotValidException(Exception):
+    #pass
+
+
+class CityNotValidException(Exception):
+    pass
+
+
+class AgeNotValidException(Exception):
+    pass
+
+
+class AddressNotValidException(Exception):
+    pass
+
+
+class CpfNotValidException(Exception):
+    pass
+
+
+class ContactNumberNotValidException(Exception):
+    pass
+
+
+class RaNotValidException(Exception):
+    pass
+
+'''
+EMAIL = 128
+    FULL_NAME = 128
+    CITY = 128
+    ADDRESS = 128
+    LECTURE_TITLE = 128
+    COURSE_NAME = 128
+    SUBSCRIPTION_TYPE = 64
+    CPF = 14
+    CONTACT_NUMBER = 14
+    RA = 9
+    STATE = 2
+'''
+
+
+class Validators:
+
+    @staticmethod
+    def full_name_validator(full_name):
+        if full_name.count(' ') < 1:
+            raise FullNameNotValidException()
+        return full_name
+
+    @staticmethod
+    def age_validator(dob, expected_age):
+        today = date.today()
+        age = today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
+        if age <= expected_age:
+            raise AgeNotValidException()
+        return dob
+
+    @staticmethod
+    def city_validator(city):
+        if len(city) < 5:
+            raise CityNotValidException()
+        return city
+
+    @staticmethod
+    def address_validator(address):
+        if len(address) < 5:
+            raise AddressNotValidException()
+        return address
+
+    @staticmethod
+    def cpf_validator(cpf):
+        if len(cpf) != FieldMaxLength.CPF:
+            raise CpfNotValidException()
+        return cpf
+
+    @staticmethod
+    def contact_number_validator(contact_number):
+        if len(contact_number) != FieldMaxLength.CONTACT_NUMBER:
+            raise ContactNumberNotValidException()
+        return contact_number
+
+    @staticmethod
+    def ra_validator(ra):
+        if len(ra) != FieldMaxLength.RA:
+            raise RaNotValidException()
+        return ra

@@ -3,8 +3,10 @@
 {% block title %} SEMAC - Dados pessoais {% endblock %}
 {% block additional_css %}
     <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+
 {% endblock %}
 {% block content %}
+    <script src="{% static 'js/input.masks.js' %}"></script>
 
     <div class="nes-container">
         <div class="nes-container is-dark" id="inner">
@@ -26,4 +28,11 @@
         </div>
     </div>
 
+    <script>
+        {% if messages %}
+          {% for message in messages %}
+            alert('{{message}}')
+          {% endfor %}
+        {% endif %}
+    </script>
 {% endblock %}
