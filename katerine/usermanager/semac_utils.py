@@ -1,5 +1,6 @@
 from datetime import date
 
+
 class FieldMaxLength:
 
     EMAIL = 128
@@ -13,6 +14,7 @@ class FieldMaxLength:
     CONTACT_NUMBER = 14
     RA = 9
     STATE = 2
+    AUTHENTICATION_CODE = 12
 
 
 class BrazilStates:
@@ -92,20 +94,6 @@ class ContactNumberNotValidException(Exception):
 
 class RaNotValidException(Exception):
     pass
-
-'''
-EMAIL = 128
-    FULL_NAME = 128
-    CITY = 128
-    ADDRESS = 128
-    LECTURE_TITLE = 128
-    COURSE_NAME = 128
-    SUBSCRIPTION_TYPE = 64
-    CPF = 14
-    CONTACT_NUMBER = 14
-    RA = 9
-    STATE = 2
-'''
 
 
 class Validators:

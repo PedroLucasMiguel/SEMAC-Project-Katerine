@@ -6,14 +6,14 @@ from . import models
 class SemacUserAdminPanel(UserAdmin):
 
     search_fields = ('email',)
-    list_filter = ('email', 'is_staff', 'is_superuser', 'is_active')
+    list_filter = ('email', 'is_staff', 'is_superuser', 'is_active', 'is_email_authenticated')
     ordering = ('-email',)
-    list_display = ('email', 'is_staff', 'is_superuser', 'is_active')
+    list_display = ('email', 'is_staff', 'is_superuser', 'is_active', 'is_email_authenticated')
 
     readonly_fields = ('email',)
 
     fieldsets = (
-        ('Login Data', {'fields': ('email', 'password')}),
+        ('Login Data', {'fields': ('email', 'password', 'is_email_authenticated')}),
         ('Django Data', {'fields': ('is_active', 'is_staff', 'is_superuser')})
     )
 
@@ -124,3 +124,4 @@ admin.site.register(models.Subscription, SubscriptionAdminPanel)
 admin.site.register(models.Lecturer, LecturerAdminPanel)
 admin.site.register(models.Lecture, LectureAdminPanel)
 admin.site.register(models.PersonOnLecture, PersonOnLectureAdminPanel)
+admin.site.register(models.SemacUserAuthenticationCode)

@@ -8,6 +8,13 @@ $(function(){
 			{
 				code_keys.pop()
 			}
-    	}
+    }
+
+    if (code_keys.length === konami_code.length){
+    	while (code_keys.length !== 0)
+		{
+			code_keys.pop()
+		}
+	}
 	});
 });

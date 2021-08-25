@@ -7,6 +7,7 @@ from django.http import HttpResponse
 
 from . import forms, models
 from .semac_utils import *
+from .semac_smtp import gmail_smtp_service_provider
 
 
 def home_page(request):
@@ -37,13 +38,17 @@ def logout_page(request):
 
 def profile_page(request):
     if request.user.is_authenticated:
-        try:
-            personal_data = models.UserPersonalData.objects.get(user_email=request.user)
-            lectures = models.PersonOnLecture.objects.filter(user_cpf=personal_data).all()
-            return render(request, 'Profile.html', {'pd': personal_data, 'lc': lectures})
 
-        except ObjectDoesNotExist:
-            return redirect('/are-you-unesp/')
+        if request.user.is_email_authenticated:
+            try:
+                personal_data = models.UserPersonalData.objects.get(user_email=request.user)
+                lectures = models.PersonOnLecture.objects.filter(user_cpf=personal_data).all()
+                return render(request, 'Profile.html', {'pd': personal_data, 'lc': lectures})
+
+            except ObjectDoesNotExist:
+                return redirect('/are-you-unesp/')
+
+        return redirect('/authenticate-email/')
 
     return redirect('/login/')
 
@@ -54,13 +59,51 @@ def register_page(request):
 
         if form.is_valid():
             user = form.save()
-            login(request, user)  # The login is necessary because we need a logged user to register the personal data
-            return redirect('/are-you-unesp/')
+            login(request, user)  # Login necessário para criar informações pessoais
+            return redirect('/authenticate-email/')
 
         return render(request, 'Register.html', {'form': form})
 
     form = forms.SemacUserRegisterForm()
     return render(request, 'Register.html', {'form': form})
+
+
+def email_authentication(request):
+    if request.user.is_authenticated:
+
+        if not request.user.is_email_authenticated:
+
+            if request.POST:
+                code_on_db = models.SemacUserAuthenticationCode.objects.get(user_email=request.user)
+                code = code_on_db.code
+                form = forms.EmailAuthenticationForm(data=request.POST)
+
+                if form.is_valid():
+                    code_form = form.cleaned_data['code'].upper()
+                    if code_form == code:
+                        request.user.is_email_authenticated = True
+                        request.user.save()
+                        code_on_db.delete()
+                        return redirect('/are-you-unesp/')
+                    else:
+                        messages.error(request, 'Código informado não é valido!')
+
+                return render(request, 'EmailAuthenticationPage.html', {'form': form})
+
+            if not models.SemacUserAuthenticationCode.objects.filter(user_email=request.user).exists():
+                code = gmail_smtp_service_provider.send_verification_code(request.user.email)
+                semac_user_authentication_code = models.SemacUserAuthenticationCode(
+                    code=code,
+                    user_email=request.user
+                )
+                semac_user_authentication_code.save()
+
+            form = forms.EmailAuthenticationForm()
+            return render(request, 'EmailAuthenticationPage.html', {'form': form})
+
+        return redirect('/')
+
+    return redirect('/login/')
 
 
 def are_you_unesp_page(request):
@@ -222,6 +265,15 @@ def personal_data_unesp_page(request):
         return redirect('/')
 
     return redirect('/login/')
+
+
+def DEBUG_test_smtp(request):
+    if request.user.is_authenticated:
+        email = request.user.email
+        gmail_smtp_service_provider.send_verification_code(email)
+        return HttpResponse('Enviado?')
+    return redirect('/')
+
 
 def DEBUG_render_test(request):
     if request.POST:

@@ -30,6 +30,20 @@ class SemacUserRegisterForm(UserCreationForm):
         fields = ('email', 'password1', 'password2')
 
 
+class EmailAuthenticationForm(forms.Form):
+    code = forms.CharField(
+        label='Código de autenticação',
+        max_length=FieldMaxLength.AUTHENTICATION_CODE,
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'nes-input is-dark semac-field',
+                'id': 'authentication-code-field',
+            }
+        )
+    )
+
+
 class PersonalDataForm(forms.Form):
 
     full_name = forms.CharField(

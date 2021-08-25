@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-from django.core.validators import MinLengthValidator
 from .semac_utils import FieldMaxLength
+
 
 class SemacUserManager(BaseUserManager):
 
@@ -23,6 +23,7 @@ class SemacUserManager(BaseUserManager):
 class SemacUser(AbstractBaseUser, PermissionsMixin):
 
     email = models.EmailField(max_length=FieldMaxLength.EMAIL, primary_key=True, blank=False, null=False)
+    is_email_authenticated = models.BooleanField(default=False)
 
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -100,3 +101,13 @@ class PersonOnLecture(models.Model):
 
     def __str__(self):
         return f'ID: {self.id} | Lecture ID {self.lecture_id} | User CPF: {self.user_cpf}'
+
+
+class SemacUserAuthenticationCode(models.Model):
+
+    id = models.AutoField(primary_key=True)
+    code = models.CharField(max_length=FieldMaxLength.AUTHENTICATION_CODE, null=False, blank=False)
+    user_email = models.ForeignKey(SemacUser, on_delete=models.CASCADE, related_name='auth_code')
+
+    def __str__(self):
+        return f'Email: {self.user_email} | Code: {self.code}'
