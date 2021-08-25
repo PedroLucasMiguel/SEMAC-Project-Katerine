@@ -15,6 +15,7 @@
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
         <script src="{% static 'js/popper.min.js' %}"></script>
         <script src="{% static 'js/jquery.mask.min.js' %}"></script>
+        {% block additional_js %} {% endblock %}
         <!-- Nossos css -->
         {% block additional_css %} {% endblock %}
     </head>
