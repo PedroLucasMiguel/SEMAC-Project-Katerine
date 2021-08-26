@@ -11,6 +11,11 @@ form ul{
     color: black !important;
 }
 
+.form-error{
+    font-family: 'VCR_OSD_MONO_1.001';
+    color: red;
+}
+
 .form-title{
     font-family: 'VCR_OSD_MONO_1.001';
 

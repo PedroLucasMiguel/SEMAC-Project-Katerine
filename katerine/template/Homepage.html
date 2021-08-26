@@ -5,7 +5,8 @@
 <script src="{% static 'js/ReallyImportantAndSecretCode.js' %}"></script>
 {% endblock %}
 {% block content %}
-
+    {{user.personal_data}}
+    {{user.auth_code}}
     <h1 class="dumb-shit">Oi, eu sou um placeholder</h1>
     <h3 class="dumb-shit">Me ignore por enquanto pois ainda não temos homepage</h3>
     <br>

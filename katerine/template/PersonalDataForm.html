@@ -20,6 +20,12 @@
             </a>
             <br>
             <br>
+            {% if messages %}
+                {% for message in messages %}
+                <p class="form-error">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+            <br>
             <form method="post">
                 {% csrf_token %}
                 {{form.as_p}}
@@ -27,12 +33,4 @@
             </form>
         </div>
     </div>
-
-    <script>
-        {% if messages %}
-          {% for message in messages %}
-            alert('{{message}}')
-          {% endfor %}
-        {% endif %}
-    </script>
 {% endblock %}

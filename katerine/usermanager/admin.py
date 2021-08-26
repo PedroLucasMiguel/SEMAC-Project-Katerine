@@ -75,11 +75,12 @@ class LectureAdminPanel(admin.ModelAdmin):
 
     search_fields = ('id', 'title', 'lecturer_id__id', 'lecturer_id__full_name', 'date_and_time')
     ordering = ('-id',)
-    list_display = ('id', 'title', 'lecturer_id', 'date_and_time')
+    list_display = ('id', 'title', 'lecturer_id', 'date_and_time', 'enable_presence_url')
 
     fieldsets = (
         ('Lecture Data', {'fields': ('title', 'date_and_time')}),
-        ('Lecturer Data', {'fields': ('lecturer_id',)})
+        ('Lecturer Data', {'fields': ('lecturer_id',)}),
+        ('Presence URL', {'fields': ('enable_presence_url',)}),
     )
 
 
@@ -93,28 +94,6 @@ class PersonOnLectureAdminPanel(admin.ModelAdmin):
     fieldsets = (
         ('Lecture with person data', {'fields': ('lecture_id', 'user_cpf')}),
     )
-
-'''
-class VacDosesAdminPanel(admin.ModelAdmin):
-    search_fields = ('id', 'date_and_time', 'vac_batch', 'room')
-    list_filter = ('was_person_vaccinated', 'was_medical_staff_vaccinated', 'was_employee_vaccinated')
-    ordering = ('-id',)
-    list_display = ('id', 'date_and_time', 'room', 'was_person_vaccinated', 'was_medical_staff_vaccinated',
-                    'was_employee_vaccinated', 'vac_batch')
-
-    readonly_fields = ['id']
-
-    fieldsets = (
-        ('Control Data', {'fields': ('id', 'date_and_time', 'next_dose', 'due_alert')}),
-        ('Where was applied', {'fields': ['room']}),
-        ('Who applied', {'fields': ['medical_staff']}),
-        ('Who got applied', {'fields': ('was_person_vaccinated', 'was_medical_staff_vaccinated',
-                                        'was_employee_vaccinated', 'vaccinated_person',
-                                        'vaccinated_medical_staff', 'vaccinated_employee')}),
-        ('Type and batch', {'fields': ('vac_type', 'vac_batch')}),
-        ('Doses', {'fields': ['doses']}),
-    )
-'''
 
 
 admin.site.register(models.SemacUser, SemacUserAdminPanel)

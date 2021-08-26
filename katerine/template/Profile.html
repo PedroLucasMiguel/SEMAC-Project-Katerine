@@ -6,7 +6,18 @@
 {% endblock %}
 {% block content %}
         {{lc.lecture_id.title}}
-        <div class="nes-container">
+        {% if ap|length > 0 %}
+            <br>
+            <div class="nes-container is-dark with-title" id="aviso">
+                <h1 class="title">Presenças pendendtes</h1>
+                {% for l in ap %}
+                <p>Hey! Você tem uma presença disponível em: </p>
+                <a href="{{l}}">{{l}}</a>
+                <br>
+                {% endfor %}
+            </div>
+        {% endif %}
+            <br>
             <div class="row">
                 <!--Dados do usuário-->
                 <div class="col-sm-5">
@@ -46,4 +57,5 @@
                 </div>
             </div>
         </div>
+        <br>
 {% endblock %}

@@ -41,13 +41,33 @@ def profile_page(request):
 
         if request.user.is_email_authenticated:
             try:
-                personal_data = models.UserPersonalData.objects.get(user_email=request.user)
-                lectures = models.PersonOnLecture.objects.filter(user_cpf=personal_data).all()
+                personal_data = request.user.personal_data
+                lectures = personal_data.participated_lectures.all()
                 unesp_data = None
-                if models.UserUnespData.objects.filter(user_cpf=personal_data).exists():
-                    unesp_data = models.UserUnespData.objects.get(user_cpf=personal_data)
+                available_presences = None
 
-                return render(request, 'Profile.html', {'pd': personal_data, 'lc': lectures, 'ud': unesp_data})
+                if hasattr(personal_data, 'unesp_data'):
+                    unesp_data = personal_data.unesp_data
+
+                if models.Lecture.objects.filter(enable_presence_url=True).exists():
+                    lecture_query = models.Lecture.objects.filter(enable_presence_url=True).all()
+                    available_presences = []
+
+                    for lecture in lecture_query.iterator():
+
+                        if not models.PersonOnLecture.objects.filter(lecture_id=lecture, user_cpf=request.user.personal_data).exists():
+
+                            lecture_title = str(lecture.title)
+                            lecture_link = lecture_title.replace(' ', '%20')
+                            lecture_link = f'http://127.0.0.1:8000/presence/{lecture_link}'
+                            available_presences.append(lecture_link)
+
+                return render(request, 'Profile.html', {
+                    'pd': personal_data,
+                    'lc': lectures,
+                    'ud': unesp_data,
+                    'ap': available_presences,
+                })
 
             except ObjectDoesNotExist:
                 return redirect('/are-you-unesp/')
@@ -81,7 +101,7 @@ def email_authentication(request):
         if not request.user.is_email_authenticated:
 
             if request.POST:
-                code_on_db = models.SemacUserAuthenticationCode.objects.get(user_email=request.user)
+                code_on_db = request.user.auth_code
                 code = code_on_db.code
                 form = forms.EmailAuthenticationForm(data=request.POST)
 
@@ -97,7 +117,7 @@ def email_authentication(request):
 
                 return render(request, 'EmailAuthenticationPage.html', {'form': form})
 
-            if not models.SemacUserAuthenticationCode.objects.filter(user_email=request.user).exists():
+            if not hasattr(request.user, 'auth_code'):
                 code = gmail_smtp_service_provider.send_verification_code(request.user.email)
                 semac_user_authentication_code = models.SemacUserAuthenticationCode(
                     code=code,
@@ -156,31 +176,31 @@ def personal_data_page(request):
                     personal_data.save()
                     return redirect('/profile/')
 
-                messages.error(request, 'CPF Informado ja se encontra cadastrado')
+                messages.error(request, 'CPF Informado já se encontra cadastrado!')
 
             except FullNameNotValidException:
-                messages.error(request, 'Nome informado inválido')
+                messages.error(request, 'Nome informado inválido!')
 
             except CpfNotValidException:
-                messages.error(request, 'CPF informado inválido')
+                messages.error(request, 'CPF informado inválido!')
 
             except AgeNotValidException:
-                messages.error(request, 'Idade informada inválido')
+                messages.error(request, 'Idade informada inválida! (Menor de 11 anos)')
 
             except CityNotValidException:
-                messages.error(request, 'Cidade informada inválido')
+                messages.error(request, 'Cidade informada inválida!')
 
             except AddressNotValidException:
-                messages.error(request, 'Endereço informado inválido')
+                messages.error(request, 'Endereço informado inválido!')
 
             except ContactNumberNotValidException:
-                messages.error(request, 'Telefone de contado informado inválido')
+                messages.error(request, 'Telefone de contado informado inválido!')
 
         return render(request, 'PersonalDataForm.html', {'form': form})
 
     if request.user.is_authenticated:
 
-        if not models.UserPersonalData.objects.filter(user_email=request.user).exists():
+        if not hasattr(request.user, 'personal_data'):
             form = forms.PersonalDataForm()
             return render(request, 'PersonalDataForm.html', {'form': form})
 
@@ -235,39 +255,66 @@ def personal_data_unesp_page(request):
                         return redirect('/profile/')
 
                     else:
-                        messages.error(request, 'RA informado já se encontra cadastrado no sistema')
+                        messages.error(request, 'RA informado já se encontra cadastrado no sistema!')
 
                 else:
-                    messages.error(request, 'CPF Informado já se encontra cadastrado')
+                    messages.error(request, 'CPF informado já se encontra cadastrado!')
 
             except FullNameNotValidException:
-                messages.error(request, 'Nome informado inválido')
+                messages.error(request, 'Nome informado inválido!')
 
             except CpfNotValidException:
-                messages.error(request, 'CPF informado inválido')
+                messages.error(request, 'CPF informado inválido!')
 
             except AgeNotValidException:
-                messages.error(request, 'Idade informada inválido')
+                messages.error(request, 'Idade informada inválida! (Menor de 16 anos)')
 
             except CityNotValidException:
-                messages.error(request, 'Cidade informada inválido')
+                messages.error(request, 'Cidade informada inválida!')
 
             except AddressNotValidException:
-                messages.error(request, 'Endereço informado inválido')
+                messages.error(request, 'Endereço informado inválido!')
 
             except ContactNumberNotValidException:
-                messages.error(request, 'Telefone de contado informado inválido')
+                messages.error(request, 'Telefone de contado informado inválido!')
 
             except RaNotValidException:
-                messages.error(request, 'RA informado inválido')
+                messages.error(request, 'RA informado inválido!')
 
         return render(request, 'PersonalDataForm.html', {'form': form})
 
     if request.user.is_authenticated:
 
-        if not models.UserPersonalData.objects.filter(user_email=request.user).exists():
+        if not hasattr(request.user, 'personal_data'):
             form = forms.PersonalDataUnespForm()
             return render(request, 'PersonalDataForm.html', {'form': form})
+
+        return redirect('/')
+
+    return redirect('/login/')
+
+
+def presence_page(request, lecture_name='Abacaxi'):
+
+    if request.user.is_authenticated:
+
+        if models.Lecture.objects.filter(title=lecture_name).exists():
+            lecture = models.Lecture.objects.get(title=lecture_name)
+            personal_data = request.user.personal_data
+
+            if lecture.enable_presence_url:
+
+                if not models.PersonOnLecture.objects.filter(lecture_id=lecture, user_cpf=personal_data).exists():
+                    person_on_lecture = models.PersonOnLecture(
+                        lecture_id=lecture,
+                        user_cpf=personal_data
+                    )
+                    person_on_lecture.save()
+                    return render(request, 'PresencePage.html', {'status': 'accounted'})
+
+                return render(request, 'PresencePage.html', {'status': 'already_have'})
+
+            return render(request, 'PresencePage.html', {'status': 'not_enabled'})
 
         return redirect('/')
 

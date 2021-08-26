@@ -1,0 +1,46 @@
+{% extends 'Template.html' %}
+{% load static %}
+{% block title %} SEMAC - Presença {% endblock %}
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="nes-container">
+        <div class="nes-container is-dark" id="inner">
+            {% if status == 'accounted' %}
+            <h1 class="form-title">Sua presença foi contabilizada com sucesso!</h1>
+            <br>
+            <h5 class="form-description">Você pode verificar suas presenças no seu perfil.</h5>
+            <br>
+            <br>
+            <a class="form-description">
+                Em caso de dúvidas ou problemas, entre em contato pelo email: pedro.l.miguel@semac.cc, ou pelo nosso Discord!
+            </a>
+            <br>
+            <img src="{% static 'images/check1.png' %}">
+            {% elif status == 'already_have' %}
+            <h1 class="form-title">Opa, calma ai!</h1>
+            <br>
+            <h5 class="form-description">Sua presença já se encontra contabilizada em nosso sitema.</h5>
+            <br>
+            <br>
+            <a class="form-description">
+                Em caso de dúvidas ou problemas, entre em contato pelo email: pedro.l.miguel@semac.cc, ou pelo nosso Discord!
+            </a>
+            {% elif status == 'not_enabled' %}
+            <h1 class="form-title">Opa, calma ai!</h1>
+            <br>
+            <h5 class="form-description">Calma... Ainda não habilitamos a contabilização de presença desta página</h5>
+            <br>
+            <br>
+            <a class="form-description">
+                Em caso de dúvidas ou problemas, entre em contato pelo email: pedro.l.miguel@semac.cc, ou pelo nosso Discord!
+            </a>
+            {% else %}
+            <h1 class="form-title">Honestamente, eu não faço ideia de como você veio parar aqui :/</h1>
+            <br>
+            <h5 class="form-description">Poderia me mandar um email em 'pedro.l.miguel@semac.cc' para explicar o que aconteceu?</h5>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
