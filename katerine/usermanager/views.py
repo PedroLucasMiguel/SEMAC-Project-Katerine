@@ -10,11 +10,33 @@ from .semac_utils import *
 from .semac_smtp import gmail_smtp_service_provider
 
 
+def template_refresh_notifications(request):
+    available_presences = []
+
+    if request.user.is_authenticated:
+        if hasattr(request.user, 'personal_data'):
+            if models.Lecture.objects.filter(enable_presence_url=True).exists():
+                lecture_query = models.Lecture.objects.filter(enable_presence_url=True).all()
+
+                for lecture in lecture_query.iterator():
+                    if not models.PersonOnLecture.objects.filter(lecture_id=lecture,
+                                                                 user_cpf=request.user.personal_data).exists():
+                        lecture_title = str(lecture.title)
+                        lecture_link = lecture_title.replace(' ', '%20')
+                        lecture_link = f'http://127.0.0.1:8000/presence/{lecture_link}'
+                        available_presences.append(lecture_link)
+
+    return available_presences
+
+
 def home_page(request):
-    return render(request, 'Homepage.html', {})
+    notifications = template_refresh_notifications(request)
+    return render(request, 'Homepage.html', {'not': notifications})
 
 
 def login_page(request):
+    notifications = template_refresh_notifications(request)
+
     if request.POST:
         form = forms.SemacUserLoginForm(data=request.POST)
 
@@ -22,11 +44,11 @@ def login_page(request):
             login(request, form.get_user())
             return redirect('/profile/')
 
-        return render(request, 'Login.html', {'form': form})
+        return render(request, 'Login.html', {'form': form, 'not': notifications})
 
     if not request.user.is_authenticated:
         form = forms.SemacUserLoginForm()
-        return render(request, 'Login.html', {'form': form})
+        return render(request, 'Login.html', {'form': form, 'not': notifications})
 
     return redirect('/')
 
@@ -37,6 +59,8 @@ def logout_page(request):
 
 
 def profile_page(request):
+    notifications = template_refresh_notifications(request)
+
     if request.user.is_authenticated:
 
         if request.user.is_email_authenticated:
@@ -44,29 +68,15 @@ def profile_page(request):
                 personal_data = request.user.personal_data
                 lectures = personal_data.participated_lectures.all()
                 unesp_data = None
-                available_presences = None
 
                 if hasattr(personal_data, 'unesp_data'):
                     unesp_data = personal_data.unesp_data
-
-                if models.Lecture.objects.filter(enable_presence_url=True).exists():
-                    lecture_query = models.Lecture.objects.filter(enable_presence_url=True).all()
-                    available_presences = []
-
-                    for lecture in lecture_query.iterator():
-
-                        if not models.PersonOnLecture.objects.filter(lecture_id=lecture, user_cpf=request.user.personal_data).exists():
-
-                            lecture_title = str(lecture.title)
-                            lecture_link = lecture_title.replace(' ', '%20')
-                            lecture_link = f'http://127.0.0.1:8000/presence/{lecture_link}'
-                            available_presences.append(lecture_link)
 
                 return render(request, 'Profile.html', {
                     'pd': personal_data,
                     'lc': lectures,
                     'ud': unesp_data,
-                    'ap': available_presences,
+                    'not': notifications,
                 })
 
             except ObjectDoesNotExist:
@@ -137,7 +147,7 @@ def are_you_unesp_page(request):
     if request.user.is_authenticated:
 
         if not models.UserPersonalData.objects.filter(user_email=request.user).exists():
-            return render(request, 'AreYouUnesp.html', {})
+            return render(request, 'AreYouUnesp.html')
 
         return redirect('/')
 
@@ -295,7 +305,7 @@ def personal_data_unesp_page(request):
 
 
 def presence_page(request, lecture_name='Abacaxi'):
-
+    notifications = template_refresh_notifications(request)
     if request.user.is_authenticated:
 
         if models.Lecture.objects.filter(title=lecture_name).exists():
@@ -310,11 +320,17 @@ def presence_page(request, lecture_name='Abacaxi'):
                         user_cpf=personal_data
                     )
                     person_on_lecture.save()
-                    return render(request, 'PresencePage.html', {'status': 'accounted'})
 
-                return render(request, 'PresencePage.html', {'status': 'already_have'})
+                    # É necessário realizar a atualização das notificações nesta etapa pois o usuário, após de fato
+                    # O usuario adquirir a presença clicando no link, as notificações continuam mostrando a presença que
+                    # ele ja pegou.
+                    notifications = template_refresh_notifications(request)
 
-            return render(request, 'PresencePage.html', {'status': 'not_enabled'})
+                    return render(request, 'PresencePage.html', {'status': 'accounted', 'not': notifications})
+
+                return render(request, 'PresencePage.html', {'status': 'already_have', 'not': notifications})
+
+            return render(request, 'PresencePage.html', {'status': 'not_enabled', 'not': notifications})
 
         return redirect('/')
 
