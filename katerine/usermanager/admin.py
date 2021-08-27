@@ -50,12 +50,12 @@ class UserUnespDataAdminPanel(admin.ModelAdmin):
 class SubscriptionAdminPanel(admin.ModelAdmin):
 
     search_fields = ('id', 'user_cpf__cpf', 'user_cpf__full_name', 'type')
-    list_filter = ('type', 'is_payed')
+    list_filter = ('type',)
     ordering = ('-id',)
-    list_display = ('id', 'user_cpf', 'type', 'is_payed')
+    list_display = ('id', 'user_cpf', 'type', 'date_of_verification', 'payment_confirmation')
 
     fieldsets = (
-        ('Subscription Data', {'fields': ('type', 'is_payed')}),
+        ('Subscription Data', {'fields': ('type', 'date_of_verification', 'payment_confirmation')}),
         ('User Data', {'fields': ('user_cpf',)})
     )
 
@@ -96,9 +96,21 @@ class PersonOnLectureAdminPanel(admin.ModelAdmin):
     )
 
 
+class SubscriptionPaymentConfirmationAdminPanel(admin.ModelAdmin):
+    search_fields = ('user_cpf__cpf', 'user_cpf__full_name')
+    readonly_fields = ('id',)
+    ordering = ('-id',)
+    list_display = ('id', 'user_cpf')
+
+    fieldsets = (
+        ('Data', {'fields': ('id', 'user_cpf', 'payment_confirmation')}),
+    )
+
+
 admin.site.register(models.SemacUser, SemacUserAdminPanel)
 admin.site.register(models.UserPersonalData, UserPersonalDataAdminPanel)
 admin.site.register(models.UserUnespData, UserUnespDataAdminPanel)
+admin.site.register(models.SubscriptionPaymentConfirmation, SubscriptionPaymentConfirmationAdminPanel)
 admin.site.register(models.Subscription, SubscriptionAdminPanel)
 admin.site.register(models.Lecturer, LecturerAdminPanel)
 admin.site.register(models.Lecture, LectureAdminPanel)

@@ -26,9 +26,8 @@
     if (percentage < 100) {
 
         document.getElementById("eta").innerText =
-            "Eta: " + daysLeftTimer + " Dias | " + hoursLeftTimer + " Horas | " + minutesLeftTimer + " Minutos | " + secondsLeftTimer + " Segundos"
+            "Tempo estimado: " + daysLeftTimer + " Dias | " + hoursLeftTimer + " Horas | " + minutesLeftTimer + " Minutos | " + secondsLeftTimer + " Segundos"
         document.getElementById("progress-bar").setAttribute("value", percentage.toString())
-        console.log(loading_dots)
     }
 }
 

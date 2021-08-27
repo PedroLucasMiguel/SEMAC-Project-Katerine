@@ -18,6 +18,14 @@
                         {% if ud != None %}
                         <p>Ra: {{ud.ra}}</p>
                         {% endif %}
+                        {% if sub_c != None and sub == None %}
+                        <br>
+                        <p>Status da inscrição: Aguardando verificação manual</p>
+                        {% elif sub_c != None and sub != None %}
+                        <br>
+                        <p>Status da inscrição: Confirmada</p>
+                        <p>Tipo da inscrição: {{sub.type}}</p>
+                        {% endif %}
                     </div>
                 </div>
                  <!--Hitórico-->

@@ -4,10 +4,13 @@ from django.contrib.auth import login, logout
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
 from django.http import HttpResponse
+from django.conf import settings
 
 from . import forms, models
 from .semac_utils import *
 from .semac_smtp import gmail_smtp_service_provider
+
+import os
 
 
 def template_refresh_notifications(request):
@@ -68,14 +71,23 @@ def profile_page(request):
                 personal_data = request.user.personal_data
                 lectures = personal_data.participated_lectures.all()
                 unesp_data = None
+                sub_confirmation = None
+                sub = None
 
                 if hasattr(personal_data, 'unesp_data'):
                     unesp_data = personal_data.unesp_data
+
+                if hasattr(personal_data, 'sub_confirmation'):
+                    sub_confirmation = personal_data.sub_confirmation
+                    if hasattr(personal_data, 'subscription'):
+                        sub = personal_data.subscription
 
                 return render(request, 'Profile.html', {
                     'pd': personal_data,
                     'lc': lectures,
                     'ud': unesp_data,
+                    'sub_c': sub_confirmation,
+                    'sub': sub,
                     'not': notifications,
                 })
 
@@ -237,7 +249,7 @@ def personal_data_unesp_page(request):
                 ra = Validators.ra_validator(form.cleaned_data.get('ra'))
                 course_name = form.cleaned_data.get('course_name')  # Não precisa de validação
                 dob = Validators.age_validator(form.cleaned_data.get('dob'), 16)
-                state = form.cleaned_data.get('state') # Não precisa de validação
+                state = form.cleaned_data.get('state')  # Não precisa de validação
                 city = Validators.city_validator(form.cleaned_data.get('city'))
                 address = Validators.address_validator(form.cleaned_data.get('address'))
                 contact_number = Validators.contact_number_validator(form.cleaned_data.get('contact_number'))
@@ -335,6 +347,61 @@ def presence_page(request, lecture_name='Abacaxi'):
         return redirect('/')
 
     return redirect('/login/')
+
+
+def buy_subscription_page(request):
+    notifications = template_refresh_notifications(request)
+
+    if request.user.is_authenticated and hasattr(request.user, 'personal_data'):
+        form = forms.PaymentConfirmationForm()
+
+        if not hasattr(request.user.personal_data, 'sub_confirmation'):
+            if request.POST:
+
+                form = forms.PaymentConfirmationForm(request.POST, request.FILES)
+
+                if form.is_valid():
+                    image = form.cleaned_data.get('image')
+
+                    if image:
+                        if image.size > 8 * 1024 * 1024:
+                            messages.error(request, "Tamanho da imagem inválido ( > 8mb )")
+                            return render(request, 'BuySubscriptionPage.html', {'form': form, 'not': notifications})
+
+                        payment_confirmation = models.SubscriptionPaymentConfirmation(
+                            user_cpf=request.user.personal_data,
+                            payment_confirmation=image
+                        )
+                        payment_confirmation.save()
+
+                        return render(request, 'PaymentConfirmationSended.html', {})
+
+                    else:
+                        messages.error(request, "Não foi possível ler a imagem enviada")
+
+                return render(request, 'BuySubscriptionPage.html', {'form': form, 'not': notifications})
+
+            return render(request, 'BuySubscriptionPage.html', {'form': form, 'not': notifications})
+
+        messages.error(request, 'Nós já recebemos o seu comprovante!')
+        return render(request, 'BuySubscriptionPage.html', {'form': form, 'not': notifications})
+
+
+def view_payment_confirmation(request, cpf):
+    if request.user.is_authenticated and request.user.is_staff:
+        if models.UserPersonalData.objects.filter(cpf=cpf).exists():
+            personal_data = models.UserPersonalData.objects.get(cpf=cpf)
+            if hasattr(personal_data, 'sub_confirmation'):
+                pc = personal_data.sub_confirmation
+                image = pc.payment_confirmation
+                return render(request, 'PaymentConfirmationPage.html', {'image': 'PaymentConfirmations/'+image.name})
+
+            return HttpResponse('Não foi encontrado um comprovante para a pessoa informada')
+
+        return HttpResponse(f'Não foi encontrada a pessoa informada {models.UserPersonalData.objects.filter(cpf=cpf).exists()}')
+
+    return redirect('/')
+
 
 
 def DEBUG_test_smtp(request):

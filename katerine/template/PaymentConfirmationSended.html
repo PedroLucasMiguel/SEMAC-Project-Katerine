@@ -1,0 +1,21 @@
+{% extends 'Template.html' %}
+{% load static %}
+{% block title %} SEMAC - Presença {% endblock %}
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock %}
+{% block content %}
+
+    <div class="nes-container">
+        <div class="nes-container is-dark" id="inner">
+            <h1 class="form-title">Seu comprovante foi enviado com sucesso!</h1>
+            <br>
+            <br>
+            <a class="form-description">
+                Em caso de dúvidas ou problemas, entre em contato pelo email: pedro.l.miguel@semac.cc, ou pelo nosso Discord!
+            </a>
+            <br>
+            <img src="{% static 'images/check1.png' %}">
+        </div>
+    </div>
+{% endblock %}

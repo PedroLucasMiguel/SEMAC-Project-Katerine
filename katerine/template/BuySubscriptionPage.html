@@ -1,0 +1,28 @@
+{% extends 'Template.html' %}
+{% load static %}
+{% block title %} SEMAC - Login {% endblock %}
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="nes-container">
+        <div class="nes-container is-dark" id="inner">
+            <h1 class="form-title">Compre sua inscrição!</h1>
+            <p>
+                Aqui a gente vai colocar um puta texto bonitinho explicando passo a passo do que tem que ser feito.
+            </p>
+            <br>
+            {% if messages %}
+                {% for message in messages %}
+                <p class="form-error">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+            <br>
+            <form method="post" enctype='multipart/form-data'>
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" class="nes-btn is-dark" id="submit-form" value="Confirmar!">
+            </form>
+        </div>
+    </div>
+{% endblock %}

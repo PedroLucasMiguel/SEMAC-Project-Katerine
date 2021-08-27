@@ -1,7 +1,9 @@
+import os
+
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from .semac_utils import FieldMaxLength
-
+from django.conf import settings
 
 class SemacUserManager(BaseUserManager):
 
@@ -39,7 +41,8 @@ class SemacUser(AbstractBaseUser, PermissionsMixin):
 class UserPersonalData(models.Model):
 
     cpf = models.CharField(max_length=FieldMaxLength.CPF, primary_key=True, null=False, blank=False, unique=True)
-    user_email = models.OneToOneField(SemacUser, on_delete=models.CASCADE, related_name='personal_data')
+    user_email = models.OneToOneField(SemacUser, on_delete=models.CASCADE, related_name='personal_data',
+                                      null=False, blank=False)
     full_name = models.CharField(max_length=FieldMaxLength.FULL_NAME, null=False, blank=False)
     dob = models.DateField(blank=False, null=False)
     state = models.CharField(max_length=FieldMaxLength.STATE, null=False, blank=False)
@@ -54,22 +57,37 @@ class UserPersonalData(models.Model):
 class UserUnespData(models.Model):
 
     ra = models.CharField(max_length=FieldMaxLength.RA, primary_key=True, null=False, blank=False, unique=True)
-    user_cpf = models.OneToOneField(UserPersonalData, on_delete=models.CASCADE, related_name='unesp_data')
+    user_cpf = models.OneToOneField(UserPersonalData, on_delete=models.CASCADE, related_name='unesp_data',
+                                    null=False, blank=False)
     course_name = models.CharField(max_length=FieldMaxLength.COURSE_NAME, null=False, blank=False)
 
     def __str__(self):
         return f'RA: {self.ra} | CPF: {self.user_cpf} | Course Name: {self.course_name}'
 
 
+class SubscriptionPaymentConfirmation(models.Model):
+
+    id = models.AutoField(primary_key=True)
+    user_cpf = models.OneToOneField(UserPersonalData, on_delete=models.CASCADE, related_name='sub_confirmation',
+                                    null=False, blank=False)
+    payment_confirmation = models.ImageField(null=False, blank=False)
+
+    def __str__(self):
+        return f'ID: {self.id} | CPF {self.user_cpf}'
+
+
 class Subscription(models.Model):
 
     id = models.AutoField(primary_key=True)
-    user_cpf = models.OneToOneField(UserPersonalData, on_delete=models.CASCADE, related_name='subscription')
+    user_cpf = models.OneToOneField(UserPersonalData, on_delete=models.CASCADE, related_name='subscription',
+                                    null=False, blank=False)
     type = models.CharField(max_length=FieldMaxLength.SUBSCRIPTION_TYPE, null=False, blank=False)
-    is_payed = models.BooleanField(default=False)
+    payment_confirmation = models.OneToOneField(SubscriptionPaymentConfirmation, on_delete=models.CASCADE,
+                                                related_name='subscription', null=False, blank=False)
+    date_of_verification = models.DateField(null=False, blank=False)
 
     def __str__(self):
-        return f'ID: {self.id} | CPF: {self.user_cpf} | Type: {self.type} | Is Payed: {self.is_payed}'
+        return f'ID: {self.id} | CPF: {self.user_cpf} | Type: {self.type}'
 
 
 class Lecturer(models.Model):
@@ -86,7 +104,7 @@ class Lecture(models.Model):
 
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=FieldMaxLength.LECTURE_TITLE, null=False, blank=False)
-    lecturer_id = models.ForeignKey(Lecturer, on_delete=models.CASCADE, related_name='lecture')
+    lecturer_id = models.ForeignKey(Lecturer, on_delete=models.CASCADE, related_name='lecture', null=False, blank=False)
     date_and_time = models.DateTimeField(blank=False, null=False)
     enable_presence_url = models.BooleanField(default=False)
 
@@ -97,8 +115,10 @@ class Lecture(models.Model):
 class PersonOnLecture(models.Model):
 
     id = models.AutoField(primary_key=True)
-    lecture_id = models.ForeignKey(Lecture, on_delete=models.CASCADE, related_name='applied_lectures')
-    user_cpf = models.ForeignKey(UserPersonalData, on_delete=models.CASCADE, related_name='participated_lectures')
+    lecture_id = models.ForeignKey(Lecture, on_delete=models.CASCADE, related_name='applied_lectures',
+                                   null=False, blank=False)
+    user_cpf = models.ForeignKey(UserPersonalData, on_delete=models.CASCADE, related_name='participated_lectures',
+                                 null=False, blank=False)
 
     def __str__(self):
         return f'ID: {self.id} | Lecture ID {self.lecture_id} | User CPF: {self.user_cpf}'
@@ -108,7 +128,8 @@ class SemacUserAuthenticationCode(models.Model):
 
     id = models.AutoField(primary_key=True)
     code = models.CharField(max_length=FieldMaxLength.AUTHENTICATION_CODE, null=False, blank=False)
-    user_email = models.OneToOneField(SemacUser, on_delete=models.CASCADE, related_name='auth_code')
+    user_email = models.OneToOneField(SemacUser, on_delete=models.CASCADE, related_name='auth_code',
+                                      null=False, blank=False)
 
     def __str__(self):
         return f'Email: {self.user_email} | Code: {self.code}'

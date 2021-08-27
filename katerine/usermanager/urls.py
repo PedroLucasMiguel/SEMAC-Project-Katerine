@@ -12,6 +12,10 @@ urlpatterns = [
     path('personal-data-reister/', views.personal_data_page, name='personal data'),
     path('personal-data-unesp-reister/', views.personal_data_unesp_page, name='personal data unesp'),
     path('presence/<str:lecture_name>', views.presence_page, name='presence page'),
+    path('buy-subscription/', views.buy_subscription_page, name='buy subscription'),
+
+    path('payment-confirmation/<str:cpf>', views.view_payment_confirmation, name='payment confirmation'),
+
     path('test-smtp/', views.DEBUG_test_smtp, name='SMTP'),
     path('debug/', views.DEBUG_render_test, name='mesures'),
 ]

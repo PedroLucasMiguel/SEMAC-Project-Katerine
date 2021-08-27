@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django import forms
+from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from .semac_utils import *
 from .models import SemacUser
@@ -255,3 +256,12 @@ class PersonalDataUnespForm(forms.Form):
     class Meta:
         fields = ('full_name', 'cpf', 'dob', 'state', 'city', 'address', 'contact_number')
 
+
+class PaymentConfirmationForm(forms.Form):
+    image = forms.ImageField(
+        label='Comprovante de pagamento',
+        required=False,
+    )
+
+    class Meta:
+        fields = ('image',)
