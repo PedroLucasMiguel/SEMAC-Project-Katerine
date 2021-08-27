@@ -12,8 +12,8 @@
       <list>
         <option value="HTML File" />
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="Python Script" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -38,13 +38,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/katerine/template" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/katerine/static/css" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Github\SEMAC-Project-Katerine\katerine\static\css" />
       <recent name="C:\Github\SEMAC-Project-Katerine\katerine\template" />
     </key>
   </component>
@@ -66,6 +67,7 @@
       <workItem from="1629931840199" duration="491000" />
       <workItem from="1629977623590" duration="12091000" />
       <workItem from="1630014845174" duration="4046000" />
+      <workItem from="1630067767890" duration="9086000" />
     </task>
     <servers />
   </component>

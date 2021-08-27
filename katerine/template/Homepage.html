@@ -1,15 +1,52 @@
 {% extends 'Template.html' %}
 {% load static %}
 {% block title %} SEMAC - Home {% endblock %}
+{% block additional_css %}
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+{% endblock %}
 {% block additional_js %}
 <script src="{% static 'js/ReallyImportantAndSecretCode.js' %}"></script>
+<script src="{% static 'js/HomePageTimer.js' %}"></script>
 {% endblock %}
 {% block content %}
-    {{user.personal_data}}
-    {{user.auth_code}}
-    <h1 class="dumb-shit">Oi, eu sou um placeholder</h1>
-    <h3 class="dumb-shit">Me ignore por enquanto pois ainda não temos homepage</h3>
-    <br>
-    <h1 class="dumb-shit">:3</h1>
+
+    <div class="container nes-container is-dark" id="main-container">
+        <img src="{% static 'images/LOGO-Final-8bit-cut.png' %}" class="img-fluid" alt="semac-logo-home">
+        <br>
+        <h2 id="loading">Carregando...</h2>
+        <progress class="nes-progress is-success" value="50" max="100" id="progress-bar"></progress>
+        <p id="eta"></p>
+        <br>
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-image" src="{% static 'images/minicurso.png' %}" alt="8-bit-computador">
+                    <h2 class="card-title">Minicursos</h2>
+                    <p class="card-text">Aprenda o que há de mais atual na área de tecnologia. <br> Desenvolva
+                            novas habilidades nos mais diversos ramos e garanta estar sempre atualizado, afinal, está
+                            é uma área em constante evolução e o nosso objetivo é sempre estar um passo a frente.
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-image" src="{% static 'images/palestra.png' %}" alt="8-bit-computador">
+                    <h2 class="card-title">Palestras</h2>
+                    <p class="card-text">
+                        Um texto show para palestras
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-image" src="{% static 'images/campeonato.png' %}" alt="8-bit-computador">
+                    <h2 class="card-title">Campeonato</h2>
+                    <p class="card-text">
+                        Um texto show para campeonato
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
