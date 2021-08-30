@@ -26,7 +26,7 @@ def template_refresh_notifications(request):
                                                                  user_cpf=request.user.personal_data).exists():
                         lecture_title = str(lecture.title)
                         lecture_link = lecture_title.replace(' ', '%20')
-                        lecture_link = f'http://127.0.0.1:8000/presence/{lecture_link}'
+                        lecture_link = f'http://semac.cc/presence/{lecture_link}'
                         available_presences.append(lecture_link)
 
     return available_presences
@@ -385,6 +385,8 @@ def buy_subscription_page(request):
 
         messages.error(request, 'Nós já recebemos o seu comprovante!')
         return render(request, 'BuySubscriptionPage.html', {'form': form, 'not': notifications})
+
+    return redirect('/login/')
 
 
 def contact_page(request):
