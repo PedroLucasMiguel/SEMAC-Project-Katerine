@@ -387,6 +387,11 @@ def buy_subscription_page(request):
         return render(request, 'BuySubscriptionPage.html', {'form': form, 'not': notifications})
 
 
+def contact_page(request):
+    notifications = template_refresh_notifications(request)
+    return render(request, 'ContactPage.html', {'not': notifications})
+
+
 def view_payment_confirmation(request, cpf):
     if request.user.is_authenticated and request.user.is_staff:
         if models.UserPersonalData.objects.filter(cpf=cpf).exists():
@@ -401,7 +406,6 @@ def view_payment_confirmation(request, cpf):
         return HttpResponse(f'Não foi encontrada a pessoa informada {models.UserPersonalData.objects.filter(cpf=cpf).exists()}')
 
     return redirect('/')
-
 
 
 def DEBUG_test_smtp(request):

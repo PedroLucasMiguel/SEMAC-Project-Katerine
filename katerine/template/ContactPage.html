@@ -1,0 +1,30 @@
+{% extends 'Template.html' %}
+{% load static %}
+{% block title %} SEMAC - Contato {% endblock %}
+{% block additional_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+{% block content %}
+
+    <div class="nes-container">
+            <div class="nes-container is-dark" id="inner">
+              <h1>E ai aventureiro?</h1>
+              <p>Empacou em algum puzzle ou não sabe como chegar na sala do boss? Casta um commune e fala com a gente:</p>
+              <div class="row justify-content-center">
+                <div class="col-sm-4">
+                  <i class="nes-icon gmail is-medium"></i>
+                  <p>Manda um email para comunicacao@semac.cc e te responderemos assim que possível!</p>
+                </div>
+                <div class="col-sm-4">
+                  <i class="nes-icon facebook is-medium"></i> <i class="nes-icon instagram is-medium"></i>
+                  <p>Prefere outros meios? Vem de DM no instagram ou no facebook</p>
+                </div>
+                <div class="col-sm-4">
+                  <img src="{% static 'images/discord.jpg' %}" alt="">
+                  <p>Não da para esperar? Fala com a gente no discord</p>
+                </div>
+              </div>
+            </div>
+        </div>
+
+{% endblock %}

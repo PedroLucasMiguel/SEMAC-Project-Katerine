@@ -11,42 +11,71 @@
 {% block content %}
 
     <div class="container nes-container is-dark" id="main-container">
-        <img src="{% static 'images/LOGO-Final-8bit-cut.png' %}" class="img-fluid" alt="semac-logo-home">
-        <br>
-        <h2 id="loading">Carregando...</h2>
-        <progress class="nes-progress" value="50" max="100" id="progress-bar"></progress>
-        <p id="eta"></p>
-        <br>
-        <div class="card-deck">
-            <div class="card">
-                <div class="card-body">
-                    <img class="card-image" src="{% static 'images/minicurso.png' %}" alt="8-bit-computador">
-                    <h2 class="card-title">Minicursos</h2>
-                    <p class="card-text">Aprenda o que há de mais atual na área de tecnologia. <br> Desenvolva
-                            novas habilidades nos mais diversos ramos e garanta estar sempre atualizado, afinal, está
-                            é uma área em constante evolução e o nosso objetivo é sempre estar um passo a frente.
-                    </p>
+            <img src="{% static 'images/LOGO-Final-8bit-cut.png' %}" class="img-fluid" alt="semac-logo-home">
+            <br>
+            <h2 id="loading">Carregando...</h2>
+            <progress class="nes-progress is-dark" value="50" max="100" id="progress-bar"></progress>
+            <p id="eta"></p>
+            <br>
+            <!--Aqui começa os "cards"-->
+            <div class="row justify-content-center">
+                <div class="col-sm-3 nes-container new-container card-item">
+                    <a href=""><img src="" alt="" class="c-image"></a>
+                    <h2 class="c-title">Minicrusos</h2>
+                    <p class="c-content">Texto maneiro :p</p>
+                </div>
+                <div class="col-sm-3 nes-container new-container card-item">
+                    <a href=""><img src="" alt="" class="c-image"></a>
+                    <h2 class="c-title">Palestras</h2>
+                    <p class="c-content">Texto maneiro :p</p>
+                </div>
+                <div class="col-sm-3 nes-container new-container card-item">
+                    <a href=""><img src="" alt="" class="c-image"></a>
+                    <h2 class="c-title">Campeonato</h2>
+                    <p class="c-content">Texto maneiro :p</p>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <img class="card-image" src="{% static 'images/palestra.png' %}" alt="8-bit-computador">
-                    <h2 class="card-title">Palestras</h2>
-                    <p class="card-text">
-                        Um texto show para palestras
-                    </p>
+            <!--Fim dos cards-->
+            <!--Area dos palestrantes-->
+            <div class="nes-container new-container" id="lectures">
+                <h2>Conheça nossos palestrantes</h2>
+                <p>Ei aventureiro, em busca de um spoiler dos boss, quer dize... dos palestrantes? Então se aproxime porque o taverneiro sempre sabe de todos os rumores da cidade</p>
+                <a class="nes-btn" id="pagina-palestrantes" href="#">Conheça nossos palestrantes</a>
+            </div>
+            <!-- fim da area dos palestrantes-->
+            <!--Area dos patrocinadores-->
+            <div class="nes-container new-container" id="sponsors">
+                <h2>Patrocinadores</h2>
+                <div class="row justify-content-center">
+                    <div class="col-sm-3">
+                        <a href=""><img src="{% static 'images/pokebola-8bit.png' %}" alt=""></a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href=""><img src="{% static 'images/pokebola-8bit.png' %}" alt=""></a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href=""><img src="{% static 'images/pokebola-8bit.png' %}" alt=""></a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href=""><img src="{% static 'images/pokebola-8bit.png' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-sm-3">
+                        <a href=""><img src="{% static 'images/pokebola-8bit.png' %}" alt=""></a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href=""><img src="{% static 'images/pokebola-8bit.png' %}" alt=""></a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href=""><img src="{% static 'images/pokebola-8bit.png' %}" alt="">Se for escrever algo, escreve no final assim</a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href=""><img src="{% static 'images/pokebola-8bit.png' %}" alt=""></a>
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <img class="card-image" src="{% static 'images/campeonato.png' %}" alt="8-bit-computador">
-                    <h2 class="card-title">Campeonato</h2>
-                    <p class="card-text">
-                        Um texto show para campeonato
-                    </p>
-                </div>
-            </div>
-        </div>
+            <!-- fim da area dos patrocinadores-->
     </div>
 
 {% endblock %}
