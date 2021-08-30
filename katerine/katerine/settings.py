@@ -22,7 +22,7 @@ INSTALLED_APPS = [
     'usermanager',
 
     # 3rd party
-    'livereload',
+    #'livereload',
 ]
 
 MIDDLEWARE = [
@@ -35,7 +35,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     # 3rd party
-    'livereload.middleware.LiveReloadScript',
+    #'livereload.middleware.LiveReloadScript',
 ]
 
 ROOT_URLCONF = 'katerine.urls'
