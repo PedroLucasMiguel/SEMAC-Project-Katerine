@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="91c16e27-48d6-4f19-805b-520afb95fae5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/usermanager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/template/EmailAuthenticationPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/EmailAuthenticationPage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +80,7 @@
       <workItem from="1630260841477" duration="249000" />
       <workItem from="1630361315609" duration="2539000" />
       <workItem from="1630364922102" duration="42000" />
+      <workItem from="1630365661788" duration="4015000" />
     </task>
     <servers />
   </component>
