@@ -62,3 +62,8 @@ body{
 #inner .col-sm-4{
   text-align: center;
 }
+
+h1{
+    width: 90%;
+    word-wrap: break-word;
+}

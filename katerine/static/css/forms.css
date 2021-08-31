@@ -34,3 +34,8 @@ form ul{
     text-align: center;
     width: 100%;
 }
+
+h1{
+    width: 90%;
+    word-wrap: break-word;
+}
