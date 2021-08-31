@@ -2,17 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91c16e27-48d6-4f19-805b-520afb95fae5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/SEMAC-Project-Katerine.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SEMAC-Project-Katerine.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/client_secret.json" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/client_secret.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/katerine/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/katerine/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/token_gmail_v1.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/token_gmail_v1.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/usermanager/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/usermanager/gmail_smtp.py" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/gmail_smtp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/usermanager/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/usermanager/semac_smtp.py" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/semac_smtp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/usermanager/semac_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/semac_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/katerine/usermanager/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/katerine/usermanager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/views.py" afterDir="false" />
     </list>
@@ -148,7 +137,7 @@
       <workItem from="1630361315609" duration="2539000" />
       <workItem from="1630364922102" duration="42000" />
       <workItem from="1630365661788" duration="4015000" />
-      <workItem from="1630412933927" duration="7542000" />
+      <workItem from="1630412933927" duration="7899000" />
     </task>
     <servers />
   </component>

@@ -6,7 +6,7 @@ from . import models
 class SemacUserAdminPanel(UserAdmin):
 
     search_fields = ('email',)
-    list_filter = ('email', 'is_staff', 'is_superuser', 'is_active', 'is_email_authenticated')
+    list_filter = ('is_staff', 'is_superuser', 'is_active', 'is_email_authenticated')
     ordering = ('-email',)
     list_display = ('email', 'is_staff', 'is_superuser', 'is_active', 'is_email_authenticated')
 

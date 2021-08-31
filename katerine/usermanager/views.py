@@ -405,23 +405,3 @@ def view_payment_confirmation(request, cpf):
         return HttpResponse(f'Não foi encontrada a pessoa informada {models.UserPersonalData.objects.filter(cpf=cpf).exists()}')
 
     return redirect('/')
-
-
-def DEBUG_render_test(request):
-    if request.POST:
-        form = forms.SemacUserLoginForm(data=request.POST)
-        if form.is_valid():
-            answer = request.POST
-            login(request, form.get_user())
-            #form.save()
-            return render(request, 'PersonalDataForm.html', {'form': form, 'answer': answer})
-    answer = ['nada']
-    form = forms.PersonalDataForm()
-    return render(request, 'PersonalDataForm.html', {'form': form, 'answer': answer})
-
-
-def DEBUG_testing_mesures(request):
-    if request.user.is_authenticated:
-        return render(request, 'TestingThreads.html', {'nome': request.user.email})
-    return render(request, 'TestingThreads.html', {'nome': 'a'})
-

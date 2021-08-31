@@ -15,5 +15,6 @@ urlpatterns = [
     path('buy-subscription/', views.buy_subscription_page, name='buy subscription page'),
     path('contact/', views.contact_page, name='contact page'),
 
+    # Admin Only
     path('payment-confirmation/<str:cpf>', views.view_payment_confirmation, name='payment confirmation'),
 ]
