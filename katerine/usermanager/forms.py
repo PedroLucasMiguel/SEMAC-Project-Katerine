@@ -1,7 +1,5 @@
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django import forms
-from django.core.exceptions import ValidationError
-from django.utils.translation import ugettext_lazy as _
 from .semac_utils import *
 from .models import SemacUser
 

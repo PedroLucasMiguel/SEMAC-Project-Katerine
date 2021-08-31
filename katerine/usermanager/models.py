@@ -1,9 +1,7 @@
-import os
-
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from .semac_utils import FieldMaxLength
-from django.conf import settings
+
 
 class SemacUserManager(BaseUserManager):
 

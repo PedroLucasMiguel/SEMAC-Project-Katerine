@@ -1,4 +1,6 @@
 from datetime import date
+import random
+import string
 
 
 class FieldMaxLength:
@@ -94,6 +96,16 @@ class ContactNumberNotValidException(Exception):
 
 class RaNotValidException(Exception):
     pass
+
+
+def generate_validation_code():
+    random_code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=FieldMaxLength.AUTHENTICATION_CODE))
+    return random_code
+
+
+def write_to_smtp_queue(email, code):
+    with open('C:\Git repos\SEMAC-Project-Katerine\semac-smtp\emails-queue.txt', 'a') as file:
+        file.write(f'{email} {code}\n')
 
 
 class Validators:

@@ -16,7 +16,4 @@ urlpatterns = [
     path('contact/', views.contact_page, name='contact page'),
 
     path('payment-confirmation/<str:cpf>', views.view_payment_confirmation, name='payment confirmation'),
-
-    path('test-smtp/', views.DEBUG_test_smtp, name='SMTP'),
-    path('debug/', views.DEBUG_render_test, name='mesures'),
 ]

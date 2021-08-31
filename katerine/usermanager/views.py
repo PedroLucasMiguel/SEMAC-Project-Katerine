@@ -4,13 +4,9 @@ from django.contrib.auth import login, logout
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
 from django.http import HttpResponse
-from django.conf import settings
 
 from . import forms, models
 from .semac_utils import *
-from .semac_smtp import gmail_smtp_service_provider
-
-import os
 
 
 def template_refresh_notifications(request):
@@ -140,7 +136,8 @@ def email_authentication(request):
                 return render(request, 'EmailAuthenticationPage.html', {'form': form})
 
             if not hasattr(request.user, 'auth_code'):
-                code = gmail_smtp_service_provider.send_verification_code(request.user.email)
+                code = generate_validation_code()
+                write_to_smtp_queue(request.user.email, code)
                 semac_user_authentication_code = models.SemacUserAuthenticationCode(
                     code=code,
                     user_email=request.user
@@ -407,14 +404,6 @@ def view_payment_confirmation(request, cpf):
 
         return HttpResponse(f'Não foi encontrada a pessoa informada {models.UserPersonalData.objects.filter(cpf=cpf).exists()}')
 
-    return redirect('/')
-
-
-def DEBUG_test_smtp(request):
-    if request.user.is_authenticated:
-        email = request.user.email
-        gmail_smtp_service_provider.send_verification_code(email)
-        return HttpResponse('Enviado?')
     return redirect('/')
 
 

@@ -1,11 +1,8 @@
 import base64
-import random
-import string
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-from .gmail_smtp import create_service
-from .semac_utils import FieldMaxLength
+from gmail_smtp import create_service
 
 
 class GmailSMTPServiceProvider:
@@ -16,10 +13,9 @@ class GmailSMTPServiceProvider:
         self.api_version = 'v1'
         self.scopes = ['https://mail.google.com/']
         self.service = create_service(self.client_secret_file, self.api_name, self.api_version, self.scopes)
-        self.code_length = FieldMaxLength.AUTHENTICATION_CODE
 
-    def send_verification_code(self, to):
-        random_code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=self.code_length))
+    def send_verification_code(self, to, code):
+        random_code = code
         emailMsg = f'Parabéns! Você deu seus primeiros passos para inicial sua aventura!\n\n' \
                    f'Seu código de verificação é: {random_code}\n\n' \
                    f'Vejo você pelos campos da justi... Espera, isso da processo...\n\nTe espero no evento!\n\n' \
