@@ -2,14 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91c16e27-48d6-4f19-805b-520afb95fae5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/katerine/template/LecturerPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SEMAC-Project-Katerine.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SEMAC-Project-Katerine.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/katerine/katerine/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/katerine/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/static/css/contact.css" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/css/contact.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/static/css/forms.css" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/css/forms.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/static/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/static/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/css/homepage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/template/ContactPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/ContactPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/static/PaymentConfirmations/42742e21508e675d47b8f16ea566615c831e39c44f0c272baea6901ae84eb039.png" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/Media/42742e21508e675d47b8f16ea566615c831e39c44f0c272baea6901ae84eb039.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/static/PaymentConfirmations/42742e21508e675d47b8f16ea566615c831e39c44f0c272baea6901ae84eb039_ERelVg6.png" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/Media/42742e21508e675d47b8f16ea566615c831e39c44f0c272baea6901ae84eb039_ERelVg6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/static/PaymentConfirmations/42742e21508e675d47b8f16ea566615c831e39c44f0c272baea6901ae84eb039_VlfzS0F.png" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/Media/42742e21508e675d47b8f16ea566615c831e39c44f0c272baea6901ae84eb039_VlfzS0F.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/static/PaymentConfirmations/42742e21508e675d47b8f16ea566615c831e39c44f0c272baea6901ae84eb039_VrMdeIg.png" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/Media/42742e21508e675d47b8f16ea566615c831e39c44f0c272baea6901ae84eb039_VrMdeIg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/static/PaymentConfirmations/42742e21508e675d47b8f16ea566615c831e39c44f0c272baea6901ae84eb039_yQNB6CB.png" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/Media/42742e21508e675d47b8f16ea566615c831e39c44f0c272baea6901ae84eb039_yQNB6CB.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/static/PaymentConfirmations/Ga1qnjE.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/Media/Ga1qnjE.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/static/PaymentConfirmations/Ga1qnjE_vpAep59.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/Media/Ga1qnjE_vpAep59.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/static/PaymentConfirmations/LOGO.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/Media/LOGO.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/static/PaymentConfirmations/ryujinx_capture_2021-cnj4x.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/Media/ryujinx_capture_2021-cnj4x.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/katerine/template/Template.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/Template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/usermanager/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/usermanager/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/usermanager/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/usermanager/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/usermanager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/semac-smtp/emails-queue.txt" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/emails-queue.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/semac-smtp/token_gmail_v1.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/token_gmail_v1.pickle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +35,8 @@
       <list>
         <option value="CSS File" />
         <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -47,14 +61,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/katerine/template" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/katerine/static/css" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="terminal" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Git repos\SEMAC-Project-Katerine\katerine\static\css" />
       <recent name="C:\Git repos\SEMAC-Project-Katerine\katerine\template" />
       <recent name="C:\Github\SEMAC-Project-Katerine\katerine\template" />
       <recent name="C:\Github\SEMAC-Project-Katerine\katerine\static\css" />
@@ -144,6 +159,7 @@
       <workItem from="1630364922102" duration="42000" />
       <workItem from="1630365661788" duration="4015000" />
       <workItem from="1630412933927" duration="10396000" />
+      <workItem from="1630676317380" duration="6090000" />
     </task>
     <servers />
   </component>

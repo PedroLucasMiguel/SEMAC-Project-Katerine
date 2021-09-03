@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from ckeditor.fields import RichTextField
 from .semac_utils import FieldMaxLength
 
 
@@ -71,7 +72,7 @@ class SubscriptionPaymentConfirmation(models.Model):
     payment_confirmation = models.ImageField(null=False, blank=False)
 
     def __str__(self):
-        return f'ID: {self.id} | CPF {self.user_cpf}'
+        return f'ID: {self.id} | CPF {self.user_cpf.cpf}'
 
 
 class Subscription(models.Model):
@@ -85,7 +86,7 @@ class Subscription(models.Model):
     date_of_verification = models.DateField(null=False, blank=False)
 
     def __str__(self):
-        return f'ID: {self.id} | CPF: {self.user_cpf} | Type: {self.type}'
+        return f'ID: {self.id} | CPF: {self.user_cpf.cpf} | Type: {self.type}'
 
 
 class Lecturer(models.Model):
@@ -93,6 +94,8 @@ class Lecturer(models.Model):
     id = models.AutoField(primary_key=True)
     full_name = models.CharField(max_length=FieldMaxLength.FULL_NAME, null=False, blank=False)
     email = models.EmailField(max_length=FieldMaxLength.EMAIL, null=False, blank=False, unique=True)
+    picture = models.ImageField(null=False, blank=False)
+    page_description = RichTextField(null=False, blank=False)
 
     def __str__(self):
         return f'ID: {self.id} | Full Name: {self.full_name} | Email: {self.email}'

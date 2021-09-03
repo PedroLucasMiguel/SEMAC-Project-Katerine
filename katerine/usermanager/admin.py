@@ -67,7 +67,7 @@ class LecturerAdminPanel(admin.ModelAdmin):
     list_display = ('id', 'full_name', 'email')
 
     fieldsets = (
-        ('Data', {'fields': ('full_name', 'email')}),
+        ('Data', {'fields': ('full_name', 'email', 'picture', 'page_description')}),
     )
 
 

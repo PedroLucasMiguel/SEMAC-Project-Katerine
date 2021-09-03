@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'usermanager',
 
     # 3rd party
+    'ckeditor',
     #'livereload',
 ]
 
@@ -103,4 +104,4 @@ else:
     STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 AUTH_USER_MODEL = 'usermanager.SemacUser'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/PaymentConfirmations')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/Media')

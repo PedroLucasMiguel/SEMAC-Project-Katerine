@@ -391,6 +391,20 @@ def contact_page(request):
     return render(request, 'ContactPage.html', {'not': notifications})
 
 
+def lecturer_page(request, name):
+    notifications = template_refresh_notifications(request)
+
+    if models.Lecturer.objects.filter(full_name=name).exists():
+        lecturer = models.Lecturer.objects.get(full_name=name)
+        return render(request, 'LecturerPage.html', {
+            'not': notifications,
+            'lec': lecturer,
+            'image': f'Media/{lecturer.picture.name}'
+        })
+
+    return redirect('/')
+
+
 def view_payment_confirmation(request, cpf):
     if request.user.is_authenticated and request.user.is_staff:
         if models.UserPersonalData.objects.filter(cpf=cpf).exists():
@@ -398,7 +412,7 @@ def view_payment_confirmation(request, cpf):
             if hasattr(personal_data, 'sub_confirmation'):
                 pc = personal_data.sub_confirmation
                 image = pc.payment_confirmation
-                return render(request, 'PaymentConfirmationPage.html', {'image': 'PaymentConfirmations/'+image.name})
+                return render(request, 'PaymentConfirmationPage.html', {'image': 'Media/'+image.name})
 
             return HttpResponse('Não foi encontrado um comprovante para a pessoa informada')
 
