@@ -16,7 +16,7 @@ class GmailSMTPServiceProvider:
 
     def send_verification_code(self, to, code):
         random_code = code
-        emailMsg = f'Parabéns! Você deu seus primeiros passos para inicial sua aventura!\n\n' \
+        emailMsg = f'Parabéns! Você deu seus primeiros passos para iniciar sua aventura!\n\n' \
                    f'Seu código de verificação é: {random_code}\n\n' \
                    f'Vejo você pelos campos da justi... Espera, isso da processo...\n\nTe espero no evento!\n\n' \
                    f'Com <3 da comissão da SEMAC 2021'

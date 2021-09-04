@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="91c16e27-48d6-4f19-805b-520afb95fae5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/static/css/lecturer.css" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/css/lecturer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/static/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/css/homepage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/template/Homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/Homepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/template/Template.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/Template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/semac-smtp/emails-queue.txt" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/emails-queue.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/semac-smtp/semac_smtp.py" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/semac_smtp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/semac-smtp/token_gmail_v1.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/token_gmail_v1.pickle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,6 +146,8 @@
       <workItem from="1630412933927" duration="10396000" />
       <workItem from="1630676317380" duration="6597000" />
       <workItem from="1630686299063" duration="1104000" />
+      <workItem from="1630699215692" duration="1615000" />
+      <workItem from="1630766386875" duration="5177000" />
     </task>
     <servers />
   </component>

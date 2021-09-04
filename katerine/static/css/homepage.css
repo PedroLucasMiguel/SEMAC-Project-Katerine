@@ -45,6 +45,10 @@ body{
     word-break: break-word;
 }
 
+html{
+    cursor: auto !important;
+}
+
 .nes-progress{
     border-image-slice:2;
     border-image-width:2;
