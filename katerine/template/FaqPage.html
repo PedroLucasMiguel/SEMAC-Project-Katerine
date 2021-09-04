@@ -1,0 +1,220 @@
+{% extends 'Template.html' %}
+{% load static %}
+{% block title %} SEMAC - Perfil {% endblock %}
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'css/faq.css' %}">
+{% endblock %}
+{% block content %}
+        <div class="nes-container">
+            <div class="nes-container is-dark">
+                <div class="nes-container new-container">
+                    <div id="accordion">
+                        <div class="card new-container">
+                          <div class="" id="headingOne">
+                            <h5 class="mb-0">
+                              <button class="nes-select is-dark btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    O que é a SEMAC?
+                              </button>
+                            </h5>
+                          </div>
+
+                          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                A SEMAC é um evento anual da área de TI e é organizado por alunos do curso de Bacharelado em Ciência da Computação da UNESP de São José do Rio Preto
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card new-container">
+                            <div class="" id="headingTwo">
+                              <h5 class="mb-0">
+                                <button class="nes-select is-dark btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Como participar?
+                                </button>
+                              </h5>
+                            </div>
+
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                              <div class="card-body">
+                                Para participar você só precisa se cadastrar no site clicando em "registre-se",
+                                realizar o login e clicar no botão "inscreva-se".
+                                Ou se já estiver logado, clique em "increva-se"
+                              </div>
+                            </div>
+                        </div>
+                        <div class="card new-container">
+                            <div class="" id="headingThree">
+                              <h5 class="mb-0">
+                                <button class="nes-select is-dark btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Quais as formas de pagamento?
+                                </button>
+                              </h5>
+                            </div>
+
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                              <div class="card-body">
+                                Não sei, tem que ver com o presidente
+                              </div>
+                            </div>
+                        </div>
+                        <div class="card new-container">
+                            <div class="" id="headingFour">
+                              <h5 class="mb-0">
+                                <button class="nes-select is-dark btn-link" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    O que fazer após o pagamento?
+                                </button>
+                              </h5>
+                            </div>
+
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                              <div class="card-body">
+                                Basta realizar o login ou cadastro de sua conta e seguir as informações que estão <a href="/buy-subscription/">nesta página</a>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="card new-container">
+                            <div class="" id="headingFive">
+                              <h5 class="mb-0">
+                                <button class="nes-select is-dark btn-link" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Quais são os tipos de inscrição?
+                                </button>
+                              </h5>
+                            </div>
+
+                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                              <div class="card-body">
+                                Existem dois tipos de inscrição:<br>
+                                - Completa: Garante seu diploma em todos os minicursos que você participou, além de garantir a sua entrada no campeonato caso você tenha um time.
+                                <br>- Competitor: Garante sua entrada no campeonato.
+                              </div>
+                            </div>
+                        </div>
+                        <div class="card new-container">
+                            <div class="" id="headingSix">
+                              <h5 class="mb-0">
+                                <button class="nes-select is-dark btn-link" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                    Não estou pagando pela conta com meu nome, devo fazer algo?
+                                </button>
+                              </h5>
+                            </div>
+
+                            <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+                              <div class="card-body">
+                                Não se preocupe, caso encontremos algum problema entraremos em contato com você pelo e-mail ou telefone informados em seu cadastro.
+                              </div>
+                            </div>
+                        </div>
+                        <div class="card new-container">
+                            <div class="" id="headingSeven">
+                              <h5 class="mb-0">
+                                <button class="nes-select is-dark btn-link" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                    Quais empresas vão participar?
+                                </button>
+                              </h5>
+                            </div>
+
+                            <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+                              <div class="card-body">
+                                Sei lá, pergunta pro patrocínio.
+                              </div>
+                            </div>
+                        </div>
+                        <div class="card new-container">
+                            <div class="" id="headingEight">
+                              <h5 class="mb-0">
+                                <button class="nes-select is-dark btn-link" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                    Qualquer pessoa pode participar do evento?
+                                </button>
+                              </h5>
+                            </div>
+
+                            <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion">
+                              <div class="card-body">
+                                Sim! Como este ano o evento será 100% online, estamos abrindo as portas da casa para qualquer pessoa que queira participar do evento.
+                              </div>
+                            </div>
+                        </div>
+                        <div class="card new-container">
+                            <div class="" id="headingNine">
+                              <h5 class="mb-0">
+                                <button class="nes-select is-dark btn-link" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                    O que é o campeonato de jogos da SEMAC?
+                                </button>
+                              </h5>
+                            </div>
+
+                            <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion">
+                              <div class="card-body">
+                                É um evento onde vários jogadores podem se unir em times para participar de uma competição de League of Legends, onde o vencedor recebera uma premiassão expecial.
+                              </div>
+                            </div>
+                        </div>
+                        <div class="card new-container">
+                            <div class="" id="headingTen">
+                              <h5 class="mb-0">
+                                <button class="nes-select is-dark btn-link" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                                    Como participar dos campeonatos de jogos?
+                                </button>
+                              </h5>
+                            </div>
+
+                            <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion">
+                              <div class="card-body">
+                                Basta realizar o cadastro no site caso não tenha uma conta clicando em "Registre-se", e após o cadastro, clicar em "inscreva-se".
+                              </div>
+                            </div>
+                        </div>
+                        <div class="card new-container">
+                            <div class="" id="headingEleven">
+                              <h5 class="mb-0">
+                                <button class="nes-select is-dark btn-link" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                                    Como marcar minha presença nas palestras e minicursos?
+                                </button>
+                              </h5>
+                            </div>
+
+                            <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#accordion">
+                              <div class="card-body">
+                                Vamos avisar durante a Live para que todos cliquem em um link que vamos enviar no chat, onde caso você já esteja logado no site, sua presença sera contabilizada
+                                automaticamente.
+                                Caso contrário, você será redirecionado para a página de "Login", onde após realizar seu login você encontrara um botão no canto superior direito da tela chamado de
+                                "notificações", clicando lá, você podera clicar na sua "missão" e realizar o registro de sua presença.
+                              </div>
+                            </div>
+                        </div>
+                        <div class="card new-container">
+                            <div class="" id="headingTwelve">
+                              <h5 class="mb-0">
+                                <button class="nes-select is-dark btn-link" data-toggle="collapse" data-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+                                    Qual o discord da SEMAC?
+                                </button>
+                              </h5>
+                            </div>
+
+                            <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwelve" data-parent="#accordion">
+                              <div class="card-body">
+                                LINK
+                              </div>
+                            </div>
+                        </div>
+                        <div class="card new-container">
+                            <div class="" id="headingThirteen">
+                              <h5 class="mb-0">
+                                <button class="nes-select is-dark btn-link" data-toggle="collapse" data-target="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen">
+                                    Por que entrar no Discord da SEMAC?
+                                </button>
+                              </h5>
+                            </div>
+
+                            <div id="collapseThirteen" class="collapse" aria-labelledby="headingThirteen" data-parent="#accordion">
+                              <div class="card-body">
+                                O Discord é o nosso canal de comunicação quase instantânea, pois estamos sempre atentos as mensagens por lá.
+                                Além disso, o discord nos oferece opções de atendimento por voz, além de compartilhamento de tela.
+                                Então se precisar de ajuda imediata, nos encontre no discord!
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

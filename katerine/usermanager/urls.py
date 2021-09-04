@@ -14,6 +14,7 @@ urlpatterns = [
     path('presence/<str:lecture_name>', views.presence_page, name='presence page'),
     path('buy-subscription/', views.buy_subscription_page, name='buy subscription page'),
     path('contact/', views.contact_page, name='contact page'),
+    path('faq/', views.faq_page, name='faq page'),
     path('lecturer/<str:name>/', views.lecturer_page, name='lecturer page'),
 
     # Admin Only

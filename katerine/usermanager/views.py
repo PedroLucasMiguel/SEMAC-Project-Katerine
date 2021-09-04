@@ -405,6 +405,11 @@ def lecturer_page(request, name):
     return redirect('/')
 
 
+def faq_page(request):
+    notifications = template_refresh_notifications(request)
+    return render(request, 'FaqPage.html', {'not': notifications})
+
+
 def view_payment_confirmation(request, cpf):
     if request.user.is_authenticated and request.user.is_staff:
         if models.UserPersonalData.objects.filter(cpf=cpf).exists():

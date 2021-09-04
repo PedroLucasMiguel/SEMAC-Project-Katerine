@@ -3,12 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="91c16e27-48d6-4f19-805b-520afb95fae5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/static/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/css/homepage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/template/Homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/Homepage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/katerine/template/Template.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/Template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/semac-smtp/emails-queue.txt" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/emails-queue.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/semac-smtp/semac_smtp.py" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/semac_smtp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/semac-smtp/token_gmail_v1.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/token_gmail_v1.pickle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/usermanager/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/usermanager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +43,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/katerine/static/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/katerine/template" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -54,8 +51,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Git repos\SEMAC-Project-Katerine\katerine\static\css" />
       <recent name="C:\Git repos\SEMAC-Project-Katerine\katerine\template" />
+      <recent name="C:\Git repos\SEMAC-Project-Katerine\katerine\static\css" />
       <recent name="C:\Github\SEMAC-Project-Katerine\katerine\template" />
       <recent name="C:\Github\SEMAC-Project-Katerine\katerine\static\css" />
     </key>
@@ -148,6 +145,7 @@
       <workItem from="1630686299063" duration="1104000" />
       <workItem from="1630699215692" duration="1615000" />
       <workItem from="1630766386875" duration="5177000" />
+      <workItem from="1630776588051" duration="408000" />
     </task>
     <servers />
   </component>
