@@ -17,7 +17,7 @@
             <!--Aqui começa os "cards"-->
             {% for i in lec %}
                 <div class="col-sm-3 nes-container new-container card-item">
-                    <a href="/lecturers/{{i.id}}"><img src="{% static 'media/' %}{{i.picture}}" alt="" class="c-image"></a>
+                    <a href="/lecturers/{{i.id}}"><img src="{% static 'Media/' %}{{i.picture}}" alt="" class="c-image"></a>
                     <h2 class="c-title">{{i.full_name}}</h2>
                 </div>
             {% endfor %}
