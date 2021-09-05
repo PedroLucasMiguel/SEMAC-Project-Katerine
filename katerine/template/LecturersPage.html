@@ -1,0 +1,27 @@
+{% extends 'Template.html' %}
+{% load static %}
+{% block title %} SEMAC - Palestrantes {% endblock %}
+{% block additional_css %}
+<link rel="stylesheet" href="{% static 'css/lecturer.css' %}">
+{% endblock %}
+{% block additional_js %}
+<script src="{% static 'js/ReallyImportantAndSecretCode.js' %}"></script>
+<script src="{% static 'js/HomePageTimer.js' %}"></script>
+{% endblock %}
+{% block content %}
+
+    <div class="container nes-container is-dark" id="main-container">
+        <h1>Palestrantes</h1>
+        <br>
+        <div class="row justify-content-center">
+            <!--Aqui começa os "cards"-->
+            {% for i in lec %}
+                <div class="col-sm-3 nes-container new-container card-item">
+                    <a href="/lecturers/{{i.id}}"><img src="{% static 'media/' %}{{i.picture}}" alt="" class="c-image"></a>
+                    <h2 class="c-title">{{i.full_name}}</h2>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

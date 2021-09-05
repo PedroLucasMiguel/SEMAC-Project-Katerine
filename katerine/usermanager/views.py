@@ -391,11 +391,19 @@ def contact_page(request):
     return render(request, 'ContactPage.html', {'not': notifications})
 
 
-def lecturer_page(request, name):
+def lecturers_page(request):
+    notfications = template_refresh_notifications(request)
+    lecturers = models.Lecturer.objects.all()
+    if len(lecturers) != 0:
+        return render(request, 'LecturersPage.html', {'not': notfications, 'lec': lecturers})
+    return redirect('/')
+
+
+def lecturer_page(request, id):
     notifications = template_refresh_notifications(request)
 
-    if models.Lecturer.objects.filter(full_name=name).exists():
-        lecturer = models.Lecturer.objects.get(full_name=name)
+    if models.Lecturer.objects.filter(id=id).exists():
+        lecturer = models.Lecturer.objects.get(id=id)
         return render(request, 'LecturerPage.html', {
             'not': notifications,
             'lec': lecturer,
