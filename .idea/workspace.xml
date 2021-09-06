@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="91c16e27-48d6-4f19-805b-520afb95fae5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/static/css/forms.css" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/css/forms.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/static/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/css/homepage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/template/BuySubscriptionPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/BuySubscriptionPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/template/FaqPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/FaqPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/template/Homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/Homepage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/usermanager/semac_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/semac_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +144,7 @@
       <workItem from="1630766386875" duration="5177000" />
       <workItem from="1630776588051" duration="408000" />
       <workItem from="1630855615505" duration="2947000" />
-      <workItem from="1630931105851" duration="6713000" />
+      <workItem from="1630931105851" duration="8045000" />
     </task>
     <servers />
   </component>
