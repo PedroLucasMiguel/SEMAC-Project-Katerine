@@ -1,28 +1,72 @@
 {% extends 'Template.html' %}
 {% load static %}
-{% block title %} SEMAC - Login {% endblock %}
+{% block title %} SEMAC - Inscreva-se {% endblock %}
 {% block additional_css %}
-    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/buysubscription.css' %}">
 {% endblock %}
 {% block content %}
     <div class="nes-container">
         <div class="nes-container is-dark" id="inner">
-            <h1 class="form-title">Compre sua inscrição!</h1>
-            <p>
-                Aqui a gente vai colocar um puta texto bonitinho explicando passo a passo do que tem que ser feito.
+            <h1 class="form-title"> Compre sua inscrição! </h1>
+            <br>
+            <p class="form-description">
+                Saudações aventureiro, vejo que se interessou pelo evento, então aqui vão as instruções
+                de como você pode participar dessa jornada!
             </p>
             <br>
+            <h3 class="form-title"> Inscrição completa (R$ 10,00) </h3>
+            <p class="form-description">
+                Com a inscrição completa você tem direito a:<br>
+                - Diploma dos minicursos<br>
+                - Ticket para participar do campeonato
+            </p>
+            <a class="nes-btn is-success" id="buy-subscription">Compre sua inscrição completa!</a>
             {% if messages %}
                 {% for message in messages %}
                 <p class="form-error">{{message}}</p>
                 {% endfor %}
             {% endif %}
             <br>
-            <form method="post" enctype='multipart/form-data'>
-                {% csrf_token %}
-                {{form.as_p}}
-                <input type="submit" class="nes-btn is-dark" id="submit-form" value="Confirmar!">
-            </form>
+            <h3 class="form-title"> Ticket do campeonato (R$ 5,00) </h3>
+            <p class="form-description">
+                Com o ticket do campeonato você tem direito a:<br>
+                - Participar do campeonato
+            </p>
+            <a class="nes-btn is-success" id="buy-ticket">Compre seu ticket!</a>
+            <br>
+            <br>
+            <p class="form-description">
+                Após realizar a compra, você precisa enviar uma imagem do seu comprovante de pagamento aqui no site!<br>
+                Basta clicar no botão de "escolher arquivo" (choose file), e clicar no botão "confirmar" para <br>
+                enviar a imagem do seu comprovante para gente.<br>
+                Lembrando que você só pode realizar o envio uma vez, então certifique-se que esta enviando o arquivo correto.<br>
+            </p>
+
+            <div class="container nes-container is-dark">
+                {% if messages %}
+                {% for message in messages %}
+                <p class="form-error">{{message}}</p>
+                {% endfor %}
+                {% endif %}
+                <br>
+                <form method="post" enctype='multipart/form-data' id="confirmation-form">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <input type="submit" class="nes-btn" id="submit-form" value="Confirmar!">
+                </form>
+            </div>
+            <br>
+            <p class="form-description">
+                Para mais informações referentes ao campeonato:
+            </p>
+            <p class="form-description"><a>- Leia o regulamento</a></p>
+            <p class="form-description"><a>- Acesse o nosso discord</a></p>
+            <br>
+            <p class="form-description">
+                Sofreu algum problema no processo? Entre em contato por:
+            </p>
+            <p class="form-description"><a>- Email: comunicacao@semac.cc</a></p>
+            <p class="form-description"><a>- Acesse o nosso discord</a></p>
         </div>
     </div>
 {% endblock %}

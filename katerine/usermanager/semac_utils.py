@@ -122,6 +122,8 @@ class Validators:
         age = today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
         if age <= expected_age:
             raise AgeNotValidException()
+        if age >= 120:  # Isso é um fix bem idiota, mas honestamente eu já estou meio cansado de fazer esse site
+            raise AgeNotValidException()
         return dob
 
     @staticmethod
