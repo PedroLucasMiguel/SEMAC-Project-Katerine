@@ -3,6 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="91c16e27-48d6-4f19-805b-520afb95fae5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/static/css/contact.css" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/css/contact.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/template/BuySubscriptionPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/BuySubscriptionPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/template/ContactPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/ContactPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/template/FaqPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/FaqPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/template/Homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/Homepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/template/LecturerPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/LecturerPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/template/PresencePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/PresencePage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/usermanager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/semac-smtp/emails-queue.txt" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/emails-queue.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/semac-smtp/token_gmail_v1.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/token_gmail_v1.pickle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,6 +155,7 @@
       <workItem from="1630776588051" duration="408000" />
       <workItem from="1630855615505" duration="2947000" />
       <workItem from="1630931105851" duration="8045000" />
+      <workItem from="1631014535524" duration="2059000" />
     </task>
     <servers />
   </component>

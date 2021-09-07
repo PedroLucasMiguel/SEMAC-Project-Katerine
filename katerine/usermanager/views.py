@@ -316,33 +316,37 @@ def personal_data_unesp_page(request):
 def presence_page(request, lecture_name='Abacaxi'):
     notifications = template_refresh_notifications(request)
     if request.user.is_authenticated:
+        if hasattr(request.user, 'personal_data'):
+            if models.Lecture.objects.filter(title=lecture_name).exists():
+                lecture = models.Lecture.objects.get(title=lecture_name)
+                personal_data = request.user.personal_data
 
-        if models.Lecture.objects.filter(title=lecture_name).exists():
-            lecture = models.Lecture.objects.get(title=lecture_name)
-            personal_data = request.user.personal_data
+                if lecture.enable_presence_url:
+                    if hasattr(request.user.personal_data, 'subscription'):
+                        if not models.PersonOnLecture.objects.filter(lecture_id=lecture, user_cpf=personal_data).exists():
+                            person_on_lecture = models.PersonOnLecture(
+                                lecture_id=lecture,
+                                user_cpf=personal_data
+                            )
+                            person_on_lecture.save()
 
-            if lecture.enable_presence_url:
+                            # É necessário realizar a atualização das notificações nesta etapa pois o usuário, após de fato
+                            # O usuario adquirir a presença clicando no link, as notificações continuam mostrando a presença que
+                            # ele ja pegou.
+                            notifications = template_refresh_notifications(request)
 
-                if not models.PersonOnLecture.objects.filter(lecture_id=lecture, user_cpf=personal_data).exists():
-                    person_on_lecture = models.PersonOnLecture(
-                        lecture_id=lecture,
-                        user_cpf=personal_data
-                    )
-                    person_on_lecture.save()
+                            return render(request, 'PresencePage.html', {'status': 'accounted', 'not': notifications})
 
-                    # É necessário realizar a atualização das notificações nesta etapa pois o usuário, após de fato
-                    # O usuario adquirir a presença clicando no link, as notificações continuam mostrando a presença que
-                    # ele ja pegou.
-                    notifications = template_refresh_notifications(request)
+                        return render(request, 'PresencePage.html', {'status': 'already_have', 'not': notifications})
 
-                    return render(request, 'PresencePage.html', {'status': 'accounted', 'not': notifications})
+                    else:
+                        return render(request, 'PresencePage.html', {'status': 'no_subscription',
+                                                                     'not': notifications})
 
-                return render(request, 'PresencePage.html', {'status': 'already_have', 'not': notifications})
+                return render(request, 'PresencePage.html', {'status': 'not_enabled', 'not': notifications})
 
-            return render(request, 'PresencePage.html', {'status': 'not_enabled', 'not': notifications})
-
-        return redirect('/')
-
+            return redirect('/')
+        return redirect('/profile/')
     return redirect('/login/')
 
 
