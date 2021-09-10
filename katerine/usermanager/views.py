@@ -7,6 +7,7 @@ from django.http import HttpResponse
 
 from . import forms, models
 from .semac_utils import *
+import datetime
 
 
 def template_refresh_notifications(request):
@@ -434,5 +435,126 @@ def view_payment_confirmation(request, cpf):
             return HttpResponse('Não foi encontrado um comprovante para a pessoa informada')
 
         return HttpResponse(f'Não foi encontrada a pessoa informada {models.UserPersonalData.objects.filter(cpf=cpf).exists()}')
+
+    return redirect('/')
+
+
+def payment_confirmation_page(request):
+    if request.user.is_staff:
+        form = forms.SubscriptionConfirmationForm()
+        all_payment_confirmations = models.SubscriptionPaymentConfirmation.objects.all()
+        payment_confirmations = []
+
+        for i in all_payment_confirmations:
+            if not hasattr(i, 'subscription'):  # Garante que só apareça os que ainda não tem inscrição confirmada
+                payment_confirmations.append(i)
+
+        if request.POST:
+            form = forms.SubscriptionConfirmationForm(data=request.POST)
+
+            if form.is_valid():
+                cpf = form.cleaned_data.get('cpf')
+                sub_type = form.cleaned_data.get('subscription_type')
+
+                if models.UserPersonalData.objects.filter(cpf=cpf).exists():
+                    user_cpf = models.UserPersonalData.objects.get(cpf=cpf)
+                    if models.SubscriptionPaymentConfirmation.objects.filter(user_cpf=user_cpf).exists():
+                        payment_confirmation_from_db = models.SubscriptionPaymentConfirmation.objects.get(
+                            user_cpf=user_cpf)
+
+                        subscripton = models.Subscription(
+                            user_cpf=user_cpf,
+                            type=sub_type,
+                            payment_confirmation=payment_confirmation_from_db,
+                            date_of_verification=datetime.date.today(),
+                        )
+
+                        subscripton.save()
+                        return redirect('/payment-confirmation-panel/')
+
+                    else:
+                        messages.error(request, 'CPF não possui arquivo de confirmação')
+                else:
+                    messages.error(request, 'CPF digitado inexistente na DB')
+
+        return render(request, 'SubscriptionConfirmationPage.html', {'form': form, 'pc': payment_confirmations})
+
+    return redirect('/')
+
+
+def reset_password_send_code(request):
+    if not request.user.is_authenticated:
+        form = forms.ResetPasswordSendCodeForm()
+
+        if request.POST:
+            form = forms.ResetPasswordSendCodeForm(data=request.POST)
+
+            if form.is_valid():
+                email = form.cleaned_data.get('email')
+
+                if models.SemacUser.object.filter(email=email).exists():
+                    user = models.SemacUser.object.get(email=email)
+
+                    if not hasattr(user, 'password_code'):
+                        code = generate_validation_code()
+                        semac_password_code = models.SemacUserPasswordCode(
+                            code=code,
+                            user_email=user,
+                        )
+                        semac_password_code.save()
+
+                        write_to_smtp_password_queue(user.email, code)
+
+                    return redirect('/reset-password-with-code/')
+
+                messages.error(request, 'Email informado não possui conta cadastrada!')
+
+            return render(request, 'ResetPasswordSendCodePage.html', {'form': form})
+
+        return render(request, 'ResetPasswordSendCodePage.html', {'form': form})
+
+    return redirect('/')
+
+
+def reset_password_with_code(request):
+    if not request.user.is_authenticated:
+        form = forms.ResetPasswordWithCodeForm()
+
+        if request.POST:
+            form = forms.ResetPasswordWithCodeForm(data=request.POST)
+
+            try:
+                if form.is_valid():
+                    email = form.cleaned_data.get('email')
+                    code = form.cleaned_data.get('code')
+                    password = form.clean_and_verify_password()
+
+                    if models.SemacUser.object.filter(email=email).exists():
+                        user = models.SemacUser.object.get(email=email)
+
+                        if hasattr(user, 'password_code'):
+                            user_code = user.password_code
+
+                            if user_code.code == code:
+                                user.set_password(password)
+                                user.save()
+                                user_code.delete()
+                                return redirect('/login/')
+
+                            messages.error(request, 'Código informado não é o mesmo enviado no seu e-mail')
+
+                        else:
+                            redirect('/reset-password/')
+
+                    else:
+                        messages.error(request, 'Email informado não possui conta cadastrada')
+
+            except PasswordNotEqualException:
+                messages.error(request, 'Senhas digitadas não são iguais')
+
+            except SmallPasswordException:
+                messages.error(request, 'A senha informada precisa de pelo menos 8 caracteres')
+
+        return render(request, 'ResetPasswordWithCodePage.html', {'form': form})
 
     return redirect('/')

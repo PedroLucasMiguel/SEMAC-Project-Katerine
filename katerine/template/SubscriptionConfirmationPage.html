@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends 'Template.html' %}
+{% load static %}
+{% block title %}SEMAC ADMIN - Subscription Confirmation{% endblock %}
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+{% block content %}
+    <script src="{% static 'js/input.masks.js' %}"></script>
+    <div class="row justify-content-center" style="padding-top: 20px; padding-bottom: 20px">
+        <div class="nes-container is-dark">
+            <h1>Pendente revisão</h1>
+            {% for p in pc %}
+                <a href="http://127.0.0.1:8000/payment-confirmation/{{p.user_cpf.cpf}}" target="_blank">CPF: {{p.user_cpf.cpf}}</a>
+                <br>
+            {% endfor %}
+        </div>
+        <div class="nes-container is-dark">
+            <h1>Confirmar</h1>
+            {% if messages %}
+                {% for message in messages %}
+                <p class="form-error">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" class="nes-btn is-dark" value="Confirmar">
+            </form>
+        </div>
+    </div>
+{% endblock %}

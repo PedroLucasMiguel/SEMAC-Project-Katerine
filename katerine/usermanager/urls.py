@@ -5,6 +5,8 @@ urlpatterns = [
     path('', views.home_page, name='home'),
     path('login/', views.login_page, name='login'),
     path('logout/', views.logout_page, name='logout'),
+    path('reset-password/', views.reset_password_send_code, name='reset password send code'),
+    path('reset-password-with-code/', views.reset_password_with_code, name='reset password with code'),
     path('profile/', views.profile_page, name='profile'),
     path('account-register/', views.register_page, name='register'),
     path('authenticate-email/', views.email_authentication, name='email authentication'),
@@ -20,4 +22,5 @@ urlpatterns = [
 
     # Admin Only
     path('payment-confirmation/<str:cpf>', views.view_payment_confirmation, name='payment confirmation'),
+    path('payment-confirmation-panel/', views.payment_confirmation_page, name='payment confirmation panel'),
 ]

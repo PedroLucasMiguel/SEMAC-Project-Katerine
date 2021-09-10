@@ -263,3 +263,110 @@ class PaymentConfirmationForm(forms.Form):
 
     class Meta:
         fields = ('image',)
+
+
+class SubscriptionConfirmationForm(forms.Form):
+
+    cpf = forms.CharField(
+        label='CPF',
+        max_length=FieldMaxLength.CPF,
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'nes-input is-dark semac-field',
+                'id': 'cpf-field',
+                'placeholder': '000.000.000-00'
+            }
+        )
+    )
+
+    subscription_type = forms.CharField(
+        label='Tipo de inscrição',
+        max_length=FieldMaxLength.SUBSCRIPTION_TYPE,
+        required=True,
+        widget=forms.Select(
+            choices=Subscriptions.types,
+            attrs={
+                'class': 'nes-input is-dark semac-field',
+                'id': 'course-name-field'
+            }
+        )
+    )
+
+
+class ResetPasswordSendCodeForm(forms.Form):
+
+    email = forms.EmailField(
+        label='Email da conta',
+        max_length=FieldMaxLength.EMAIL,
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'nes-input is-dark semac-field',
+                'id': 'email-field'
+            }
+        )
+    )
+
+
+class ResetPasswordWithCodeForm(forms.Form):
+
+    email = forms.EmailField(
+        label='Email da conta',
+        max_length=FieldMaxLength.EMAIL,
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'nes-input is-dark semac-field',
+                'id': 'email-field'
+            }
+        )
+    )
+
+    code = forms.CharField(
+        label='Código',
+        max_length=FieldMaxLength.AUTHENTICATION_CODE,
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'nes-input is-dark semac-field',
+                'id': 'email-field'
+            }
+        )
+    )
+
+    password1 = forms.CharField(
+        label='Nova senha',
+        required=True,
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'nes-input is-dark semac-field',
+                'id': 'password1'
+            }
+        )
+    )
+
+    password2 = forms.CharField(
+        label='Confirme nova senha',
+        required=True,
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'nes-input is-dark semac-field',
+                'id': 'password2'
+            }
+        )
+    )
+
+    def clean_and_verify_password(self):
+        cleaned_data = super().clean()
+        p1 = cleaned_data.get('password1')
+        p2 = cleaned_data.get('password2')
+
+        if p1 != p2:
+            raise PasswordNotEqualException('Passwords are not equal')
+
+        if len(p1) < 8:
+            raise SmallPasswordException('Small password')
+
+        return p1
+

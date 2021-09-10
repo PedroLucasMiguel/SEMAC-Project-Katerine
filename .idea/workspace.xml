@@ -3,15 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="91c16e27-48d6-4f19-805b-520afb95fae5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/static/css/contact.css" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/css/contact.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/template/BuySubscriptionPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/BuySubscriptionPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/template/ContactPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/ContactPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/template/FaqPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/FaqPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/template/Homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/Homepage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/template/LecturerPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/LecturerPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/template/PresencePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/PresencePage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/static/css/forms.css" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/css/forms.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/template/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/Login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/template/PersonalDataForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/PersonalDataForm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/usermanager/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/usermanager/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/usermanager/semac_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/semac_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/usermanager/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/katerine/usermanager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/semac-smtp/emails-queue.txt" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/emails-queue.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/semac-smtp/semac_smtp.py" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/semac_smtp.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/semac-smtp/token_gmail_v1.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/token_gmail_v1.pickle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +51,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/katerine/static/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/katerine/template" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -58,8 +59,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Git repos\SEMAC-Project-Katerine\katerine\static\css" />
       <recent name="C:\Git repos\SEMAC-Project-Katerine\katerine\template" />
+      <recent name="C:\Git repos\SEMAC-Project-Katerine\semac-smtp" />
+      <recent name="C:\Git repos\SEMAC-Project-Katerine\katerine\static\css" />
       <recent name="C:\Github\SEMAC-Project-Katerine\katerine\template" />
       <recent name="C:\Github\SEMAC-Project-Katerine\katerine\static\css" />
     </key>
@@ -155,7 +157,8 @@
       <workItem from="1630776588051" duration="408000" />
       <workItem from="1630855615505" duration="2947000" />
       <workItem from="1630931105851" duration="8045000" />
-      <workItem from="1631014535524" duration="2059000" />
+      <workItem from="1631014535524" duration="3482000" />
+      <workItem from="1631272269534" duration="10225000" />
     </task>
     <servers />
   </component>
