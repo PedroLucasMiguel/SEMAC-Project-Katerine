@@ -120,12 +120,12 @@ def generate_validation_code():
 
 
 def write_to_smtp_queue(email, code):
-    with open('C:\Git repos\SEMAC-Project-Katerine\semac-smtp\emails-queue.txt', 'a') as file:
+    with open('/home/ubuntu/Semac2021/semac-smtp/emails-queue.txt', 'a') as file:
         file.write(f'{email} {code}\n')
 
 
 def write_to_smtp_password_queue(email, code):
-    with open('C:\Git repos\SEMAC-Project-Katerine\semac-smtp\password-emails-queue.txt', 'a') as file:
+    with open('/home/ubuntu/Semac2021/semac-smtp/password-emails-queue.txt', 'a') as file:
         file.write(f'{email} {code}\n')
 
 

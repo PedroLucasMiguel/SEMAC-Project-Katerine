@@ -26,13 +26,13 @@ form ul{
     font-family: 'VCR_OSD_MONO_1.001';
     justify-content: center;
     font-weight: bold;
-    text-align: center;
+    text-align: center !important;
 }
 
 .form-description-no-bold{
     font-family: 'VCR_OSD_MONO_1.001';
     justify-content: center;
-    text-align: center;
+    text-align: center !important;
 }
 
 .nes-container{
@@ -41,7 +41,6 @@ form ul{
 }
 
 h1{
-    width: 90%;
     word-wrap: break-word;
 }
 

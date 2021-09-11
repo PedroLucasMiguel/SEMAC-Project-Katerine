@@ -64,6 +64,8 @@ form ul{
 .form-description{
     font-family: 'VCR_OSD_MONO_1.001';
     justify-content: center;
+    font-weight: bold;
+    font-size: large;
     text-align: center;
 }
 
@@ -73,7 +75,6 @@ form ul{
 }
 
 h1{
-    width: 90%;
     word-wrap: break-word;
 }
 

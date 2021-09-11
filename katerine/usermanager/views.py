@@ -391,6 +391,15 @@ def buy_subscription_page(request):
     return redirect('/login/')
 
 
+def buy_subscription_page_placeholder(request):
+    notifications = template_refresh_notifications(request)
+
+    if request.user.is_authenticated:
+        return render(request, 'BuySubscriptionPagePlaceholder.html', {'not': notifications})
+
+    return redirect('/login/')
+
+
 def contact_page(request):
     notifications = template_refresh_notifications(request)
     return render(request, 'ContactPage.html', {'not': notifications})

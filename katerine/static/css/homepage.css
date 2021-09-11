@@ -148,8 +148,8 @@ html{
     margin-top: 10px;
 }
 
-#sponsors img{
-    max-width: 200px;
+.sponsor{
+    max-width: 200px !important;
 }
 
 #sponsors a{

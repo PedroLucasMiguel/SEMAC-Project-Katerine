@@ -3,17 +3,26 @@
   <component name="ChangeListManager">
     <list default="true" id="91c16e27-48d6-4f19-805b-520afb95fae5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/my.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/my.cnf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/static/css/buysubscription.css" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/css/buysubscription.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/katerine/static/css/forms.css" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/css/forms.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/template/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/Login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/static/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/css/homepage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/static/images/minicurso.png" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/images/minicurso.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/template/Homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/Homepage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/katerine/template/PersonalDataForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/PersonalDataForm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/usermanager/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/usermanager/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/template/Register.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/Register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/template/SubscriptionConfirmationPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/SubscriptionConfirmationPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/template/Template.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/Template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/usermanager/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/usermanager/migrations/0002_semacuserpasswordcode.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/katerine/usermanager/semac_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/semac_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/katerine/usermanager/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/katerine/usermanager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/semac-smtp/emails-queue.txt" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/emails-queue.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/semac-smtp/semac_smtp.py" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/semac_smtp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/semac-smtp/token_gmail_v1.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/semac-smtp/token_gmail_v1.pickle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/semac-smtp/Logs/1630677316.585424-emails-queue.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/semac-smtp/Logs/1630769145.258073-emails-queue.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/semac-smtp/Logs/1631014840.649284-emails-queue.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/semac-smtp/Logs/1631277226.222657-emails-queue.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/semac-smtp/Logs/1631280461.492372-password-emails-queue.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +167,9 @@
       <workItem from="1630855615505" duration="2947000" />
       <workItem from="1630931105851" duration="8045000" />
       <workItem from="1631014535524" duration="3482000" />
-      <workItem from="1631272269534" duration="10225000" />
+      <workItem from="1631272269534" duration="10945000" />
+      <workItem from="1631303331209" duration="138000" />
+      <workItem from="1631362959385" duration="4447000" />
     </task>
     <servers />
   </component>
