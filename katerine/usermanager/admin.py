@@ -73,13 +73,14 @@ class LecturerAdminPanel(admin.ModelAdmin):
 
 class LectureAdminPanel(admin.ModelAdmin):
 
-    search_fields = ('id', 'title', 'lecturer_id__id', 'lecturer_id__full_name', 'date_and_time')
+    search_fields = ('id', 'title', 'lecturer_id__id', 'lecturer_id__full_name', 'date_and_time', 'is_course')
     ordering = ('-id',)
-    list_display = ('id', 'title', 'lecturer_id', 'date_and_time', 'enable_presence_url')
+    list_display = ('id', 'title', 'lecturer_id', 'date_and_time', 'enable_presence_url', 'is_course')
 
     fieldsets = (
         ('Lecture Data', {'fields': ('title', 'date_and_time')}),
         ('Lecturer Data', {'fields': ('lecturer_id',)}),
+        ('Course', {'fields': ('is_course',)}),
         ('Presence URL', {'fields': ('enable_presence_url',)}),
     )
 

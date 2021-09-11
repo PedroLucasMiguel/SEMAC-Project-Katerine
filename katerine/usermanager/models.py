@@ -108,6 +108,7 @@ class Lecture(models.Model):
     lecturer_id = models.ForeignKey(Lecturer, on_delete=models.CASCADE, related_name='lecture', null=False, blank=False)
     date_and_time = models.DateTimeField(blank=False, null=False)
     enable_presence_url = models.BooleanField(default=False)
+    is_course = models.BooleanField(default=False)
 
     def __str__(self):
         return f'ID: {self.id} | Title: {self.title} | Date and Time: {self.date_and_time}'

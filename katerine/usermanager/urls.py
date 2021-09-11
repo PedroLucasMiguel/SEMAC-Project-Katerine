@@ -17,7 +17,9 @@ urlpatterns = [
     path('buy-subscription/', views.buy_subscription_page_placeholder, name='buy subscription page'),
     path('contact/', views.contact_page, name='contact page'),
     path('faq/', views.faq_page, name='faq page'),
-    path('lecturers/', views.lecturers_page, name='lecturers'),
+    path('lecturers/', views.lecturers_page, name='lecturers page'),
+    path('courses/', views.courses_page, name='courses page'),
+    path('lectures/', views.lectures_page, name='lectures page'),
     path('lecturers/<int:id>/', views.lecturer_page, name='lecturer page'),
 
     # Admin Only

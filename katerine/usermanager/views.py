@@ -413,6 +413,38 @@ def lecturers_page(request):
     return redirect('/')
 
 
+def courses_page(request):
+    notfications = template_refresh_notifications(request)
+    lecturer = models.Lecture.objects.all()
+    lecturer_course = []
+
+    if len(lecturer) != 0:
+        for i in lecturer:
+            if i.is_course:
+                lecturer_course.append(i)
+
+        if len(lecturer_course) != 0:
+            return render(request, 'CoursesPage.html', {'not': notfications, 'lec': lecturer_course})
+
+    return redirect('/')
+
+
+def lectures_page(request):
+    notfications = template_refresh_notifications(request)
+    lecturer = models.Lecture.objects.all()
+    lecturer_course = []
+
+    if len(lecturer) != 0:
+        for i in lecturer:
+            if not i.is_course:
+                lecturer_course.append(i)
+
+        if len(lecturer_course) != 0:
+            return render(request, 'LecturesPage.html', {'not': notfications, 'lec': lecturer_course})
+
+    return redirect('/')
+
+
 def lecturer_page(request, id):
     notifications = template_refresh_notifications(request)
 
