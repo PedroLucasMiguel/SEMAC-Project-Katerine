@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91c16e27-48d6-4f19-805b-520afb95fae5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/my.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/my.cnf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/template/Homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/Homepage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/template/LecturersPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/LecturersPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/usermanager/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/usermanager/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/usermanager/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/usermanager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="91c16e27-48d6-4f19-805b-520afb95fae5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -157,7 +148,7 @@
       <workItem from="1631272269534" duration="10945000" />
       <workItem from="1631303331209" duration="138000" />
       <workItem from="1631362959385" duration="4447000" />
-      <workItem from="1631373219077" duration="1974000" />
+      <workItem from="1631373219077" duration="2319000" />
     </task>
     <servers />
   </component>
