@@ -1,0 +1,31 @@
+{% extends 'Template.html' %}
+{% load static %}
+{% block title %} SEMAC - Campeonato {% endblock %}
+{% block additional_css %}
+<link rel="stylesheet" href="{% static 'css/tournament.css' %}">
+{% endblock %}
+{% block content %}
+<div class="nes-container">
+    <div class="nes-container is-dark">
+        <h1>Preparado para mostrar toda a sua mecânica?</h1>
+        <h5>O classico campeonato de League Of Legends da SEMAC está de volta!</h5>
+        <br>
+        <p>Este ano, todos os times estarão concorrendo a R$75,00 para cada um de seus jogadores (incluindo reserva)</p>
+        <p>Então, você é bom de lolzinho ou só quer se divertir? Segue as instruções!</p>
+
+        <div class="nes-container new-container" id="list">
+            <div class="lists">
+                <ul class="nes-list is-disc">
+                    <li>Crie sua conta no site da SEMAC e faça login</li>
+                    <li>Confira as regras do nosso campeonato <a href="">aqui</a> antes de realizar qualquer compra</li>
+                    <li>Clique <a href="/buy-subscription/">aqui</a> ou em "Inscreva-se" na barra de navegação</li>
+                    <li>Adquira o seu ticket de campeonato ou a inscrição completa</li>
+                    <li>Envie seu comprovante para a gente e aguarde enquanto confirmamos sua inscrição</li>
+                    <li>Entre no <a href="https://discord.gg/yw6YazvhMX" target="_blank">Discord do campeonato</a> e fique atento para todos os comunicados da organização</li>
+                </ul>
+            </div>
+        </div>
+        <p>E simples assim, você e seu time estarão inscritos no campeonato da SEMAC, então se prepare, divirta-se, tenha espirito esportivo e nos vemos em Summoner's Rift.</p>
+    </div>
+</div>
+{% endblock %}

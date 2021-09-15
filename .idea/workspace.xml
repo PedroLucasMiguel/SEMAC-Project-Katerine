@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="91c16e27-48d6-4f19-805b-520afb95fae5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/katerine/static/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/static/css/homepage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/katerine/template/Homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/template/Homepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/usermanager/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/katerine/usermanager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/katerine/usermanager/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +155,8 @@
       <workItem from="1631362959385" duration="4447000" />
       <workItem from="1631373219077" duration="2338000" />
       <workItem from="1631532075363" duration="629000" />
-      <workItem from="1631624638600" duration="293000" />
+      <workItem from="1631624638600" duration="1540000" />
+      <workItem from="1631734620366" duration="1032000" />
     </task>
     <servers />
   </component>

@@ -599,3 +599,8 @@ def reset_password_with_code(request):
         return render(request, 'ResetPasswordWithCodePage.html', {'form': form})
 
     return redirect('/')
+
+
+def tournament_page(request):
+    notifications = template_refresh_notifications(request)
+    return render(request, 'TournamentPage.html', {'not': notifications})

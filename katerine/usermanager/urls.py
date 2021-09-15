@@ -21,6 +21,7 @@ urlpatterns = [
     path('courses/', views.courses_page, name='courses page'),
     path('lectures/', views.lectures_page, name='lectures page'),
     path('lecturers/<int:id>/', views.lecturer_page, name='lecturer page'),
+    path('tournament/', views.tournament_page, name='tournament page'),
 
     # Admin Only
     path('payment-confirmation/<str:cpf>', views.view_payment_confirmation, name='payment confirmation'),
